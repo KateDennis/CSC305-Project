@@ -1,5 +1,7 @@
 package application;
 	
+import java.awt.Button;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -36,6 +38,26 @@ public class Main extends Application {
 			//Creates text box
 			TextArea userTextField = new TextArea();
 			gridPaneMain.add(userTextField, 1, 2);
+			
+			//Creates submit button
+			Button submit = new Button("Submit");
+			gridPaneMain.add(submit, 2, 2);
+			
+			//Submit Button Works
+			submit.setOnAction(value -> {
+//				String schedule = text.getText();
+//				String[] classSchedule = schedule.split("\n");
+//				int i = 1;
+//				for (String line : classSchedule) {
+//					if (i % 11 == 1) {
+//						String name = classSchedule[i];
+//						String[] times = classSchedule[i + 6].split(" ");
+//						String startTime = times[0];
+//						String endTime = times[2];
+//						new Class(name, startTime, endTime);
+//					}
+//				}
+			});
 			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
