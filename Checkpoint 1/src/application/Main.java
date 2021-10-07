@@ -21,6 +21,7 @@ public class Main extends Application {
 			gridPaneMain.setVgap(15);
 			
 			//title for window
+			//TEST
 			Label wordLabel = new Label("Fall Semester Schedule 2021");
 			gridPaneMain.add(wordLabel, 0, 0);
 			
