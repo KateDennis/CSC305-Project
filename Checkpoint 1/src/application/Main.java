@@ -29,7 +29,7 @@ public class Main extends Application {
 			wordLabel.setFont(new Font("Arial", 20));
 			gridPaneMain.add(wordLabel, 0, 0);
 			
-			//name of text box
+			//name of text box 
 			Label schedule = new Label("Insert Class Schedule:");
 			gridPaneMain.add(schedule, 0, 2);
 
