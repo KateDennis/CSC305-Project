@@ -7,8 +7,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
@@ -45,18 +44,18 @@ public class Main extends Application {
 			
 			//Submit Button Works
 			submit.setOnAction(value -> {
-//				String schedule = text.getText();
-//				String[] classSchedule = schedule.split("\n");
-//				int i = 1;
-//				for (String line : classSchedule) {
-//					if (i % 11 == 1) {
-//						String name = classSchedule[i];
-//						String[] times = classSchedule[i + 6].split(" ");
-//						String startTime = times[0];
-//						String endTime = times[2];
-//						new Class(name, startTime, endTime);
-//					}
-//				}
+				String schedule = userTextField.getText();
+				String[] classSchedule = schedule.split("\n");
+				int i = 1;
+				for (String line : classSchedule) {
+					if (i % 11 == 1) {
+						String name = classSchedule[i];
+						String[] times = classSchedule[i + 6].split(" ");
+						String startTime = times[0];
+						String endTime = times[2];
+						new Class(name, startTime, endTime);
+					}
+				}
 			});
 			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
