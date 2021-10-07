@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 
 
 public class Main extends Application {
@@ -14,15 +15,15 @@ public class Main extends Application {
 		try {
 			//make gridPaneMain
 			GridPane gridPaneMain = new GridPane();
-			Scene scene = new Scene(gridPaneMain, 400, 200);
+			Scene scene = new Scene(gridPaneMain, 600, 300);
 			primaryStage.setTitle("My Schedule");
 			gridPaneMain.setPadding(new Insets(10));
 			gridPaneMain.setHgap(15);
 			gridPaneMain.setVgap(15);
 			
 			//title for window
-			//TEST
 			Label wordLabel = new Label("Fall Semester Schedule 2021");
+			wordLabel.setFont(new Font("Arial", 30));
 			gridPaneMain.add(wordLabel, 0, 0);
 			
 
