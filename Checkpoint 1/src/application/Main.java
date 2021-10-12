@@ -37,7 +37,7 @@ public class Main extends Application {
 			TextArea userTextField = new TextArea();
 			gridPaneMain.add(userTextField, 1, 2);
 			
-			//Creates submit button
+			//Creates submit button 
 			Button submit = new Button("Submit");
 			gridPaneMain.add(submit, 2, 2);
 			
@@ -45,8 +45,9 @@ public class Main extends Application {
 			submit.setOnAction(value -> {
 				//pop-up window
 				Stage popUpStage = new Stage();
+				popUpStage.setTitle("Schedule View");
 				GridPane gridPaneMessage = new GridPane();
-				Scene scenePopUp = new Scene(gridPaneMessage, 200, 100);
+				Scene scenePopUp = new Scene(gridPaneMessage, 300, 200);
 				popUpStage.setScene(scenePopUp);
 				popUpStage.show();
 				
