@@ -37,7 +37,7 @@ public class Main extends Application {
 			TextArea userTextField = new TextArea();
 			gridPaneMain.add(userTextField, 1, 2);
 			
-			//Creates submit button
+			//Creates submit button 
 			Button submit = new Button("Submit");
 			gridPaneMain.add(submit, 2, 2);
 			
