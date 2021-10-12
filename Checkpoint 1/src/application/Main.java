@@ -56,6 +56,7 @@ public class Main extends Application {
 //				String[] classSchedule = scheduleText.split("\n");
 //				SubmitHandler submitted = new SubmitHandler(classSchedule);
 
+				
 			});
 			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
