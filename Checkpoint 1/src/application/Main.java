@@ -1,7 +1,6 @@
 package application;
 	
 
-import javafx.scene.control.Button;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -42,8 +41,17 @@ public class Main extends Application {
 			Button submit = new Button("Submit");
 			gridPaneMain.add(submit, 2, 2);
 			
-			//Submit Button Works
+			//Submit Button
 			submit.setOnAction(value -> {
+				//pop-up window
+				Stage popUpStage = new Stage();
+				GridPane gridPaneMessage = new GridPane();
+				Scene scenePopUp = new Scene(gridPaneMessage, 200, 100);
+				popUpStage.setScene(scenePopUp);
+				popUpStage.show();
+				
+				
+			//Storing data from class schedule
 //				String schedule = userTextField.getText();
 //				String[] classSchedule = schedule.split("\n");
 //				int i = 1;
