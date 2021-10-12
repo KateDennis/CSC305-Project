@@ -45,8 +45,9 @@ public class Main extends Application {
 			submit.setOnAction(value -> {
 				//pop-up window
 				Stage popUpStage = new Stage();
+				popUpStage.setTitle("Schedule View");
 				GridPane gridPaneMessage = new GridPane();
-				Scene scenePopUp = new Scene(gridPaneMessage, 200, 100);
+				Scene scenePopUp = new Scene(gridPaneMessage, 300, 200);
 				popUpStage.setScene(scenePopUp);
 				popUpStage.show();
 				
