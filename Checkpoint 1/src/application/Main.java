@@ -50,20 +50,11 @@ public class Main extends Application {
 				popUpStage.setScene(scenePopUp);
 				popUpStage.show();
 				
-				
-			//Storing data from class schedule
-//				String schedule = userTextField.getText();
-//				String[] classSchedule = schedule.split("\n");
-//				int i = 1;
-//				for (String line : classSchedule) {
-//					if (i % 11 == 1) {
-//						String name = classSchedule[i];
-//						String[] times = classSchedule[i + 6].split(" ");
-//						String startTime = times[0];
-//						String endTime = times[2];
-//						new Class(name, startTime, endTime);
-//					}
-//				}
+				//Storing data from class schedule
+//				String scheduleText = userTextField.getText();
+//				String[] classSchedule = scheduleText.split("\n");
+//				SubmitHandler submitted = new SubmitHandler(classSchedule);
+
 			});
 			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
