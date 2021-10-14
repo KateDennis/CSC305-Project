@@ -16,7 +16,7 @@ public class SubmitHandler {
 			if (line.contains("M ") && !(line.contains("-")) || line.contains("Tu ") || line.contains("W ") || line.contains("Th ")
 					|| line.contains("F ")) {
 				String days = line;
-				String[] times = schedule[i + 1].split(" ");
+				String[] times = schedule[i].split(" ");
 				String startTime = times[0];
 				String endTime = times[2];
 				classList.add(new Class(name, startTime, endTime, days));
