@@ -8,7 +8,7 @@ public class SubmitHandler {
 		int i = 1;
 		String name = "";
 		ArrayList<Class> classList = new ArrayList<Class>();
-
+		ArrayList<String> buildingList = createBuildingList();
 		for (String line : schedule) {
 			if (i % 11 == 1) {
 				name = schedule[i];
