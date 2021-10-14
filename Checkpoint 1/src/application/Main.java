@@ -52,9 +52,9 @@ public class Main extends Application {
 				popUpStage.show();
 				
 				//Storing data from class schedule
-//				String scheduleText = userTextField.getText();
-//				String[] classSchedule = scheduleText.split("\n");
-//				SubmitHandler submitted = new SubmitHandler(classSchedule);
+				String scheduleText = userTextField.getText();
+				String[] classSchedule = scheduleText.split("\n");
+				SubmitHandler submitted = new SubmitHandler(classSchedule);
 				
 			});
 			
