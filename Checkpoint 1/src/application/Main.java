@@ -55,7 +55,6 @@ public class Main extends Application {
 //				String scheduleText = userTextField.getText();
 //				String[] classSchedule = scheduleText.split("\n");
 //				SubmitHandler submitted = new SubmitHandler(classSchedule);
-
 				
 			});
 			
