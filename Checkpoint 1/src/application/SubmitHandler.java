@@ -3,15 +3,22 @@ package application;
 import java.util.*;
 
 public class SubmitHandler {
-
+	
+	/**
+	 * 
+	 * @param schedule
+	 */
 	public SubmitHandler(String[] schedule) {
 		int i = 1;
 		String name = "";
 		ArrayList<Class> classList = new ArrayList<Class>();
 		ArrayList<String> buildingList = createBuildingList();
 		for (String line : schedule) {
-			if (i % 11 == 1) {
-				name = schedule[i];
+			if (i == 1) {
+				name = line;
+			}
+			if (buildingList.contains(line) && schedule.length > i + 2 && schedule[i + 2] != null) {
+				name = schedule[i + 2];
 			}
 			if (line.contains("M ") && !(line.contains("-")) || line.contains("Tu ") || line.contains("W ") || line.contains("Th ")
 					|| line.contains("F ")) {
@@ -27,6 +34,7 @@ public class SubmitHandler {
 		System.out.println(classList.toString());
 
 	}
+	
 	/**
 	 * Creates an ArrayList<String> of the campus buildings
 	 * @return ArrayList<String> of Augustana College Buildings
