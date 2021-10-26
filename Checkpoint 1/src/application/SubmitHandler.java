@@ -13,8 +13,9 @@ public class SubmitHandler {
 		int i = 1;
 		String code = "";
 		String name = "";
-		String startDate = "";
-		String endDate = "";
+		String professor = "";
+		String building = "";
+		String room = "";
 		ArrayList<Class> classList = new ArrayList<Class>();
 		ArrayList<String> buildingList = createBuildingList();
 
@@ -25,16 +26,12 @@ public class SubmitHandler {
 				code = line;
 				name = schedule[i];
 			}
-			// Checking for building list in order to get class code and name
+			// Checking for building list in order to get building, room, and professor
 			if (buildingList.contains(line) && schedule.length > i + 2 && schedule[i + 2] != null
 					&& !(schedule[i + 2].contains("MULS"))) {
-				code = schedule[i + 2];
-				name = schedule[i + 3];
-			}
-			// Getting the start and end dates of class
-			if (line.startsWith("0")) {
-				startDate = line;
-				endDate = schedule[i];
+				building = line;
+				room = schedule[i];
+				professor = schedule[i + 1];
 			}
 			// Checking for days that the class runs in order to get which days it runs on
 			// and the times that it runs
@@ -44,13 +41,93 @@ public class SubmitHandler {
 				String[] times = schedule[i].split(" ");
 				String startTime = times[0];
 				String endTime = times[2];
-				classList.add(new Class(code, name, startDate, endDate, startTime, endTime, days));
+				classList.add(new Class(code, name, professor, building, room, startTime, endTime, days));
 			}
 			i++;
 		}
 
 		System.out.println(classList.toString());
 
+	}
+	
+	/**
+	 * 
+	 */
+	public ArrayList<String> createCourseCodeList() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("ACCT");
+		list.add("AFSP");
+		list.add("APMA");
+		list.add("ARHI");
+		list.add("ART");
+		list.add("ASIA");
+		list.add("ASTR");
+		list.add("BIOL");
+		list.add("BUSM");
+		list.add("CHEM");
+		list.add("CHNS");
+		list.add("CHST");
+		list.add("CLASS");
+		list.add("COMM");
+		list.add("CSC");
+		list.add("CSD");
+		list.add("DATA");
+		list.add("ECON");
+		list.add("EDMU");
+		list.add("EDUC");
+		list.add("ENCW");
+		list.add("ENGL");
+		list.add("ENGR");
+		list.add("ENTM");
+		list.add("ENVR");
+		list.add("FOOD");
+		list.add("FREN");
+		list.add("FRST");
+		list.add("FYH");
+		list.add("FYI");
+		list.add("GEOG");
+		list.add("GEOL");
+		list.add("GIST");
+		list.add("GRD");
+		list.add("GREK");
+		list.add("GRMN");
+		list.add("GRST");
+		list.add("HEPE");
+		list.add("HIST");
+		list.add("HONR");
+		list.add("ISS");
+		list.add("JPN");
+		list.add("JPST");
+		list.add("KINS");
+		list.add("LATN");
+		list.add("LING");
+		list.add("LSC");
+		list.add("LTAM");
+		list.add("MATH");
+		list.add("MJMC");
+		list.add("MUCH");
+		list.add("MUEN");
+		list.add("MUSC");
+		list.add("MSCI");
+		list.add("NTGR");
+		list.add("PHIL");
+		list.add("PHYS");
+		list.add("POLS");
+		list.add("PSYC");
+		list.add("PUBH");
+		list.add("RELG");
+		list.add("SCAN");
+		list.add("SLP");
+		list.add("SOAN");
+		list.add("SPAN");
+		list.add("SPRING");
+		list.add("SPST");
+		list.add("SWED");
+		list.add("THEA");
+		list.add("WGSS");
+		list.add("WLIT");
+		list.add("WLCC");
+		return list;
 	}
 
 	/**
