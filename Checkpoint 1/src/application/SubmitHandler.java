@@ -3,7 +3,7 @@ package application;
 import java.util.*;
 
 public class SubmitHandler {
-	
+
 	/**
 	 * Creates a Submit Handler which parses the data inputed into main text box
 	 * 
@@ -17,21 +17,29 @@ public class SubmitHandler {
 		String endDate = "";
 		ArrayList<Class> classList = new ArrayList<Class>();
 		ArrayList<String> buildingList = createBuildingList();
+
+		// Going through the schedule to parse out required data
 		for (String line : schedule) {
+			// Exception to get the first name and code of the first class
 			if (i == 1) {
 				code = line;
 				name = schedule[i];
 			}
-			if (buildingList.contains(line) && schedule.length > i + 2 && schedule[i + 2] != null) {
+			// Checking for building list in order to get class code and name
+			if (buildingList.contains(line) && schedule.length > i + 2 && schedule[i + 2] != null
+					&& !(schedule[i + 2].contains("MULS"))) {
 				code = schedule[i + 2];
 				name = schedule[i + 3];
 			}
+			// Getting the start and end dates of class
 			if (line.startsWith("0")) {
 				startDate = line;
 				endDate = schedule[i];
 			}
-			if (line.contains("M ") && !(line.contains("-")) || line.contains("Tu ") || line.contains("W ") || line.contains("Th ")
-					|| line.contains("F ")) {
+			// Checking for days that the class runs in order to get which days it runs on
+			// and the times that it runs
+			if (line.contains("M ") && !(line.contains("-")) || line.contains("Tu ") || line.contains("W ")
+					|| line.contains("Th ") || line.contains("F ")) {
 				String days = line;
 				String[] times = schedule[i].split(" ");
 				String startTime = times[0];
@@ -44,12 +52,12 @@ public class SubmitHandler {
 		System.out.println(classList.toString());
 
 	}
-	
+
 	/**
 	 * Creates an ArrayList<String> of the campus buildings
 	 * 
 	 * @return ArrayList<String> of Augustana College Buildings
-	 */ 
+	 */
 	public ArrayList<String> createBuildingList() {
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("EVLD");
