@@ -49,7 +49,7 @@ public class SubmitHandler {
 			}
 			i++;
 		}
-
+		//FOR TESTING PURPOSES ONLY
 		System.out.println(courseList.toString());
 
 	}
