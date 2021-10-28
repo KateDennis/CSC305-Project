@@ -9,6 +9,9 @@ public class Course {
 	private String professor = new String();
 	private String building = new String();
 	private String room = new String();
+	private double dayCode = 0;
+	private double startCode = 0;
+	private double endCode = 0;
 
 	public Course(String code, String name, String professor, String building, String room, String startTime,
 			String endTime, String days) {
