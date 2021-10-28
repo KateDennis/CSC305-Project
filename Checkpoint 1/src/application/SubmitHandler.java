@@ -16,40 +16,44 @@ public class SubmitHandler {
 		String professor = "";
 		String building = "";
 		String room = "";
-		ArrayList<Course> classList = new ArrayList<Course>();
+		String days = "";
+		String startTime = "";
+		String endTime = "";
+		ArrayList<Course> courseList = new ArrayList<Course>();
 		ArrayList<String> buildingList = createBuildingList();
-		ArrayList<String> courseList = createCourseCodeList();
+		ArrayList<String> courseCodeList = createCourseCodeList();
 
 		// Going through the schedule to parse out required data
 		for (String line : schedule) {
 			// Checking for Course code in order to get course code and name
-			if (line.length() >= 5 && courseList.contains(line.substring(0, 4))) {
+			if (line.length() >= 5 && courseCodeList.contains(line.substring(0, 4))) {
 				code = line;
 				name = schedule[i];
-			}
-			// Checking for building list in order to get building, room, and professor
-			if (buildingList.contains(line)) {
-				building = line;
-				room = schedule[i];
-				professor = schedule[i + 1];
 			}
 			// Checking for days that the class runs in order to get which days it runs on
 			// and the times that it runs
 			if (line.contains("M ") && !(line.contains("-")) || line.contains("Tu ") || line.contains("W ")
 					|| line.contains("Th ") || line.contains("F ")) {
-				String days = line;
+				days = line;
 				String[] times = schedule[i].split(" ");
-				String startTime = times[0];
-				String endTime = times[2];
-				classList.add(new Course(code, name, professor, building, room, startTime, endTime, days));
+				startTime = times[0];
+				endTime = times[2];
+			}
+			// Checking for building list in order to get building, room, and professor
+			// Adds course to course List
+			if (buildingList.contains(line)) {
+				building = line;
+				room = schedule[i];
+				professor = schedule[i + 1];
+				courseList.add(new Course(code, name, professor, building, room, startTime, endTime, days));
 			}
 			i++;
 		}
 
-		System.out.println(classList.toString());
+		System.out.println(courseList.toString());
 
 	}
-	
+
 	/**
 	 * 
 	 */
