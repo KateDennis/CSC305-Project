@@ -55,7 +55,9 @@ public class SubmitHandler {
 	}
 
 	/**
+	 * Creates an ArrayList<String> of all the course codes
 	 * 
+	 * @return an ArrayList<String> of course codes
 	 */
 	public ArrayList<String> createCourseCodeList() {
 		ArrayList<String> list = new ArrayList<String>();
