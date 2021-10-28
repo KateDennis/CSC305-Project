@@ -16,19 +16,19 @@ public class SubmitHandler {
 		String professor = "";
 		String building = "";
 		String room = "";
-		ArrayList<Class> classList = new ArrayList<Class>();
+		ArrayList<Course> classList = new ArrayList<Course>();
 		ArrayList<String> buildingList = createBuildingList();
+		ArrayList<String> courseList = createCourseCodeList();
 
 		// Going through the schedule to parse out required data
 		for (String line : schedule) {
-			// Exception to get the first name and code of the first class
-			if (i == 1) {
+			// Checking for Course code in order to get course code and name
+			if (line.length() >= 5 && courseList.contains(line.substring(0, 4))) {
 				code = line;
 				name = schedule[i];
 			}
 			// Checking for building list in order to get building, room, and professor
-			if (buildingList.contains(line) && schedule.length > i + 2 && schedule[i + 2] != null
-					&& !(schedule[i + 2].contains("MULS"))) {
+			if (buildingList.contains(line)) {
 				building = line;
 				room = schedule[i];
 				professor = schedule[i + 1];
@@ -41,7 +41,7 @@ public class SubmitHandler {
 				String[] times = schedule[i].split(" ");
 				String startTime = times[0];
 				String endTime = times[2];
-				classList.add(new Class(code, name, professor, building, room, startTime, endTime, days));
+				classList.add(new Course(code, name, professor, building, room, startTime, endTime, days));
 			}
 			i++;
 		}
@@ -59,7 +59,7 @@ public class SubmitHandler {
 		list.add("AFSP");
 		list.add("APMA");
 		list.add("ARHI");
-		list.add("ART");
+		list.add("ART-");
 		list.add("ASIA");
 		list.add("ASTR");
 		list.add("BIOL");
@@ -67,10 +67,10 @@ public class SubmitHandler {
 		list.add("CHEM");
 		list.add("CHNS");
 		list.add("CHST");
-		list.add("CLASS");
+		list.add("CLAS");
 		list.add("COMM");
-		list.add("CSC");
-		list.add("CSD");
+		list.add("CSC-");
+		list.add("CSD-");
 		list.add("DATA");
 		list.add("ECON");
 		list.add("EDMU");
@@ -83,25 +83,25 @@ public class SubmitHandler {
 		list.add("FOOD");
 		list.add("FREN");
 		list.add("FRST");
-		list.add("FYH");
-		list.add("FYI");
+		list.add("FYH-");
+		list.add("FYI-");
 		list.add("GEOG");
 		list.add("GEOL");
 		list.add("GIST");
-		list.add("GRD");
+		list.add("GRD-");
 		list.add("GREK");
 		list.add("GRMN");
 		list.add("GRST");
 		list.add("HEPE");
 		list.add("HIST");
 		list.add("HONR");
-		list.add("ISS");
-		list.add("JPN");
+		list.add("ISS-");
+		list.add("JPN-");
 		list.add("JPST");
 		list.add("KINS");
 		list.add("LATN");
 		list.add("LING");
-		list.add("LSC");
+		list.add("LSC-");
 		list.add("LTAM");
 		list.add("MATH");
 		list.add("MJMC");
@@ -117,10 +117,10 @@ public class SubmitHandler {
 		list.add("PUBH");
 		list.add("RELG");
 		list.add("SCAN");
-		list.add("SLP");
+		list.add("SLP-");
 		list.add("SOAN");
 		list.add("SPAN");
-		list.add("SPRING");
+		list.add("SPRI");
 		list.add("SPST");
 		list.add("SWED");
 		list.add("THEA");

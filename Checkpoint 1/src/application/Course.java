@@ -1,6 +1,6 @@
 package application;
 
-public class Class {
+public class Course {
 	private String classCode = new String();
 	private String className = new String();
 	private String startTime = new String();
@@ -10,7 +10,8 @@ public class Class {
 	private String building = new String();
 	private String room = new String();
 
-	public Class(String code, String name, String professor, String building, String room, String startTime, String endTime, String days) {
+	public Course(String code, String name, String professor, String building, String room, String startTime,
+			String endTime, String days) {
 		classCode = code;
 		className = name;
 		this.professor = professor;
@@ -20,8 +21,8 @@ public class Class {
 		this.endTime = endTime;
 		this.days = days;
 	}
-	
+
 	public String toString() {
-		return classCode + ", " + className + ", " + professor + ", " + startTime + ", " + endTime + ", " + days;
+		return classCode + ", " + className + ", " + building + ", " + room + ", " + professor + ", " + startTime + ", " + endTime + ", " + days;
 	}
 }
