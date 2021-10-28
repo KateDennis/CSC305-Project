@@ -23,6 +23,12 @@ public class Course {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.days = days;
+		
+		switch (startTime) {
+		case "8:30":
+			startCode = 8.3;
+			break;
+		}
 	}
 
 	public String toString() {
