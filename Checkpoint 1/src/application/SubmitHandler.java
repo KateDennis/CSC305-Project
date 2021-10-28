@@ -41,7 +41,7 @@ public class SubmitHandler {
 			}
 			// Checking for building list in order to get building, room, and professor
 			// Adds course to course List
-			if (buildingList.contains(line)) {
+			if (buildingList.contains(line) && !(code.contains("MULS"))) {
 				building = line;
 				room = schedule[i];
 				professor = schedule[i + 1];
@@ -111,6 +111,7 @@ public class SubmitHandler {
 		list.add("MJMC");
 		list.add("MUCH");
 		list.add("MUEN");
+		list.add("MULS");
 		list.add("MUSC");
 		list.add("MSCI");
 		list.add("NTGR");
