@@ -34,6 +34,10 @@ public class Course {
 	public String getName() {
 		return className;
 	}
+	
+	public String getDays() {
+		return days;
+	}
 
 	public String toString() {
 		return classCode + ", " + className + ", " + building + ", " + room + ", " + professor + ", " + startTime + ", " + endTime + ", " + days;
