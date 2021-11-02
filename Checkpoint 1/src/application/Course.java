@@ -43,6 +43,12 @@ public class Course {
 		case "10:15":
 			startCode = 10.15;
 			break;
+		case "10:20":
+			startCode = 10.2;
+			break;
+		case "10:25":
+			startCode = 10.25;
+			break;
 		case "10:30":
 			startCode = 10.3;
 			break;
