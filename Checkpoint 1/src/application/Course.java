@@ -30,6 +30,10 @@ public class Course {
 			break;
 		}
 	}
+	
+	public String getName() {
+		return className;
+	}
 
 	public String toString() {
 		return classCode + ", " + className + ", " + building + ", " + room + ", " + professor + ", " + startTime + ", " + endTime + ", " + days;
