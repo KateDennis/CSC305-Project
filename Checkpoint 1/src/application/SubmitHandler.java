@@ -47,13 +47,14 @@ public class SubmitHandler {
 				professor = schedule[i + 1];
 				String[] professorList = professor.split(",");
 				professor = professorList[1] + " " + professorList[0];
-				if (courseList.size() == 0 || !(courseList.get(courseList.size() - 1).getName().equals(name)) && !(courseList.get(courseList.size() - 1).getDays().equals(days))) {
+				if (courseList.size() == 0 || !(courseList.get(courseList.size() - 1).getName().equals(name))
+						|| !(courseList.get(courseList.size() - 1).getDays().equals(days))) {
 					courseList.add(new Course(code, name, professor, building, room, startTime, endTime, days));
 				}
 			}
 			i++;
 		}
-		//FOR TESTING PURPOSES ONLY
+		// FOR TESTING PURPOSES ONLY
 		System.out.println(courseList.toString());
 
 	}
