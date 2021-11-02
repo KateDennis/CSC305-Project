@@ -28,34 +28,46 @@ public class Course {
 	
 	private double createStartCode(String startTime) {
 		switch (startTime) {
-		case "8:00":
+		case "8:00AM":
 			startCode = 8;
 			break;
-		case "8:20":
+		case "8:20AM":
 			startCode = 8.2;
 			break;
-		case "8:30":
+		case "8:30AM":
 			startCode = 8.3;
 			break;
-		case "9:00":
+		case "9:00AM":
 			startCode = 9;
 			break;
-		case "10:15":
+		case "9:20AM":
+			startCode = 9.2;
+			break;
+		case "10:00AM":
+			startCode = 10;
+			break;
+		case "10:15AM":
 			startCode = 10.15;
 			break;
-		case "10:20":
+		case "10:20AM":
 			startCode = 10.2;
 			break;
-		case "10:25":
+		case "10:25AM":
 			startCode = 10.25;
 			break;
-		case "10:30":
+		case "10:30AM":
 			startCode = 10.3;
 			break;
-		case "12:30":
+		case "12:30PM":
 			startCode = 12.3;
 			break;
-		case "2:15":
+		case "1:00PM":
+			startCode = 1;
+			break;
+		case "1:15PM":
+			startCode = 1.15;
+			break;
+		case "2:15PM":
 			startCode = 2.15;
 			break;
 		}
