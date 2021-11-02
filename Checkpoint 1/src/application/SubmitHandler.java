@@ -45,7 +45,7 @@ public class SubmitHandler {
 				building = line;
 				room = schedule[i];
 				professor = schedule[i + 1];
-				if (!(courseList.get(courseList.size() - 1).getName().equals(name))) {
+				if (courseList.size() == 0 || !(courseList.get(courseList.size() - 1).getName().equals(name))) {
 					courseList.add(new Course(code, name, professor, building, room, startTime, endTime, days));
 				}
 			}
