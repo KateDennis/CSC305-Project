@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
-import javafx.stage.Stage; 
+import javafx.stage.Stage;  
 
 public class View extends Application {
 	
