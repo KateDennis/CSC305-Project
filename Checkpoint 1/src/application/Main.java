@@ -25,7 +25,7 @@ public class Main extends Application {
 			gridPaneMain.setVgap(15);
 			
 			//title for window
-			Label wordLabel = new Label("Fall Semester Schedule 2021");
+			Label wordLabel = new Label("Arches Semester Data to Calender");
 			wordLabel.setFont(new Font("Arial", 20));
 			gridPaneMain.add(wordLabel, 0, 0);
 			
