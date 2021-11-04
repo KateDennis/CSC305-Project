@@ -140,6 +140,10 @@ public class Course {
 			return false;
 		}
 	}
+	
+	public int compareTo(Course other) {
+		return 0;
+	}
 
 	@Override
 	public String toString() {
