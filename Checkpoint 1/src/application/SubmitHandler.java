@@ -17,7 +17,7 @@ public class SubmitHandler {
 		String name = "";
 		String professor = "";
 		String building = "";
-		String room = "";
+		String room = ""; 
 		String days = "";
 		String startTime = ""; 
 		String endTime = ""; 

@@ -22,7 +22,7 @@ public class Main extends Application {
 			primaryStage.setTitle("My Schedule");
 			gridPaneMain.setPadding(new Insets(10));
 			gridPaneMain.setHgap(15); 
-			gridPaneMain.setVgap(15);
+			gridPaneMain.setVgap(15); 
 			
 			//title for window
 			Label wordLabel = new Label("Arches Semester Data to Calender");
