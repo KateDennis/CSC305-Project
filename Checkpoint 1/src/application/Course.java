@@ -142,7 +142,32 @@ public class Course {
 	}
 	
 	public int compareTo(Course other) {
-		return 0;
+		if (this.days.contains("M") && other.days.contains("M")) {
+			if (this.startCode == other.startCode) {
+				return 1;
+			} else if (this.endCode == other.endCode) {
+				return 1;
+			} else if (this.startCode == other.endCode) {
+				return 1;
+			} else if (this.endCode == other.startCode) {
+				return 1;
+			} else {
+				return -1;
+			}
+			
+		} else if (this.days.contains("Tu") && other.days.contains("Tu")) {
+			
+			
+		} else if (this.days.contains("W") && other.days.contains("W")) {
+			
+			
+		} else if (this.days.contains("Th") && other.days.contains("Th")) {
+			
+			
+		} else if (this.days.contains("F") && other.days.contains("F")) {
+			
+		}
+		return -1;
 	}
 
 	@Override
