@@ -32,7 +32,7 @@ public class Main extends Application {
 			//name of text box 
 			Label schedule = new Label("Insert Class Schedule:");
 			gridPaneMain.add(schedule, 0, 2);
-
+ 
 			//Creates text box
 			TextArea userTextField = new TextArea();
 			gridPaneMain.add(userTextField, 1, 2);
@@ -49,12 +49,15 @@ public class Main extends Application {
 				GridPane gridPaneMessage = new GridPane();
 				Scene scenePopUp = new Scene(gridPaneMessage, 300, 200);
 				popUpStage.setScene(scenePopUp);
-				popUpStage.show();
+				popUpStage.show(); 
 				
 				//Storing data from class schedule
 				String scheduleText = userTextField.getText();
 				String[] classSchedule = scheduleText.split("\n");
 				SubmitHandler submitted = new SubmitHandler(classSchedule);
+				
+				//FOR TESTING PURPOSES ONLY
+				System.out.println(submitted.toString());
 				
 			});
 			
