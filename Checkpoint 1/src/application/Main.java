@@ -27,7 +27,7 @@ public class Main extends Application {
 			//title for window
 			Label wordLabel = new Label("Arches Semester Data to Calender");
 			wordLabel.setFont(new Font("Arial", 20));
-			gridPaneMain.add(wordLabel, 0, 0);
+			gridPaneMain.add(wordLabel, 0, 0); 
 			
 			//name of text box 
 			Label schedule = new Label("Insert Class Schedule:");
