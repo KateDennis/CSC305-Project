@@ -49,12 +49,15 @@ public class Main extends Application {
 				GridPane gridPaneMessage = new GridPane();
 				Scene scenePopUp = new Scene(gridPaneMessage, 300, 200);
 				popUpStage.setScene(scenePopUp);
-				popUpStage.show();
+				popUpStage.show(); 
 				
 				//Storing data from class schedule
 				String scheduleText = userTextField.getText();
 				String[] classSchedule = scheduleText.split("\n");
 				SubmitHandler submitted = new SubmitHandler(classSchedule);
+				
+				//FOR TESTING PURPOSES ONLY
+				System.out.println(submitted.toString());
 				
 			});
 			

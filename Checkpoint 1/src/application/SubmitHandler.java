@@ -4,6 +4,8 @@ import java.util.*;
 
 public class SubmitHandler {
 
+	ArrayList<Course> courseList = new ArrayList<Course>();
+	
 	/**
 	 * Creates a Submit Handler which parses the data inputed into main text box
 	 * 
@@ -19,7 +21,7 @@ public class SubmitHandler {
 		String days = "";
 		String startTime = "";
 		String endTime = "";
-		ArrayList<Course> courseList = new ArrayList<Course>();
+		
 		ArrayList<String> buildingList = createBuildingList();
 		ArrayList<String> courseCodeList = createCourseCodeList();
 
@@ -55,9 +57,14 @@ public class SubmitHandler {
 			i++;
 		}
 		// FOR TESTING PURPOSES ONLY
-		System.out.println(courseList.toString());
+		//System.out.println(courseList.toString());
 
 	}
+	
+	@Override
+	public String toString() {
+		return courseList.toString();
+	} 
 
 	/**
 	 * Creates an ArrayList<String> of all the course codes
