@@ -45,7 +45,7 @@ public class Main extends Application {
 			submit.setOnAction(value -> {
 				//pop-up window
 				Stage popUpStage = new Stage();
-				popUpStage.setTitle("Schedule View");
+				popUpStage.setTitle("Schedule View"); 
 				GridPane gridPaneMessage = new GridPane();
 				Scene scenePopUp = new Scene(gridPaneMessage, 300, 200);
 				popUpStage.setScene(scenePopUp);
@@ -55,6 +55,8 @@ public class Main extends Application {
 				String scheduleText = userTextField.getText();
 				String[] classSchedule = scheduleText.split("\n");
 				SubmitHandler submitted = new SubmitHandler(classSchedule);
+				
+				View calenderView = new View(primaryStage, submitted);
 				
 				//FOR TESTING PURPOSES ONLY
 				System.out.println(submitted.toString());

@@ -4,14 +4,14 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.GridPane; 
+import javafx.scene.paint.Color; 
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;  
 
 public class View extends Application {
 	
-	public void start(Stage s) {
+	public View(Stage s, SubmitHandler courseList) {
 		
 		GridPane one = new GridPane();
 		one.setPadding(new Insets(5,5,5,5));
@@ -95,5 +95,11 @@ public class View extends Application {
 	public static void main(String[] args) {
 		
 		launch(args);
+	}
+
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 }
