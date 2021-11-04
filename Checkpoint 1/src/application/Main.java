@@ -56,6 +56,8 @@ public class Main extends Application {
 				String[] classSchedule = scheduleText.split("\n");
 				SubmitHandler submitted = new SubmitHandler(classSchedule);
 				
+				View calenderView = new View(primaryStage, submitted);
+				
 				//FOR TESTING PURPOSES ONLY
 				System.out.println(submitted.toString());
 				
