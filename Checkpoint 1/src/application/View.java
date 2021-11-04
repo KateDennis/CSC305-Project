@@ -16,6 +16,7 @@ public class View extends Application {
 		GridPane one = new GridPane();
 		one.setPadding(new Insets(5,5,5,5));
 		one.setVgap(20);
+		one.setHgap(20);
 		
 		// I wish there was a better
 		// way to do this but whatever
@@ -56,16 +57,28 @@ public class View extends Application {
 		Label ii = new Label("4 pm");
 		Label jj = new Label("5 pm");
 		
-		one.add(aa,0,0);
-		one.add(bb,0,1);
-		one.add(cc,0,2);
-		one.add(dd,0,3);
-		one.add(ee,0,4);
-		one.add(ff,0,5);
-		one.add(gg,0,6);
-		one.add(hh,0,7);
-		one.add(ii,0,8);
-		one.add(jj,0,9);
+		one.add(aa,0,1);
+		one.add(bb,0,2);
+		one.add(cc,0,3);
+		one.add(dd,0,4);
+		one.add(ee,0,5);
+		one.add(ff,0,6);
+		one.add(gg,0,7);
+		one.add(hh,0,8);
+		one.add(ii,0,9);
+		one.add(jj,0,10);
+		
+		Label mon = new Label("Monday");
+		Label tue = new Label("Tuesday");
+		Label wed = new Label("Wednesday");
+		Label thu = new Label("Thursday");
+		Label fri = new Label("Friday");
+		
+		one.add(mon,1,0);
+		one.add(tue,2,0);
+		one.add(wed,3,0);
+		one.add(thu,4,0);
+		one.add(fri,5,0);
 		
 		
 		
@@ -73,7 +86,7 @@ public class View extends Application {
 		
 		
 		
-		Scene sc = new Scene(one,500,500);
+		Scene sc = new Scene(one,800,500);
 		s.setScene(sc);
 		s.show();
 	}
