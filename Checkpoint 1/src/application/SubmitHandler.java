@@ -19,7 +19,7 @@ public class SubmitHandler {
 		String building = "";
 		String room = "";
 		String days = "";
-		String startTime = "";
+		String startTime = ""; 
 		String endTime = ""; 
 		
 		ArrayList<String> buildingList = createBuildingList();

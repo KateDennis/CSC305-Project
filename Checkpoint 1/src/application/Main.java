@@ -21,7 +21,7 @@ public class Main extends Application {
 			Scene scene = new Scene(gridPaneMain, 900, 300);
 			primaryStage.setTitle("My Schedule");
 			gridPaneMain.setPadding(new Insets(10));
-			gridPaneMain.setHgap(15);
+			gridPaneMain.setHgap(15); 
 			gridPaneMain.setVgap(15);
 			
 			//title for window
