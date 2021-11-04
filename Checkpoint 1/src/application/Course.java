@@ -141,6 +141,11 @@ public class Course {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param other
+	 * @return
+	 */
 	public int compareTo(Course other) {
 		if (this.days.contains("M") && other.days.contains("M")) {
 			if (this.startCode == other.startCode) {
