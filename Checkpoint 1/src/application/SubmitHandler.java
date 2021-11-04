@@ -9,7 +9,7 @@ public class SubmitHandler {
 	/**
 	 * Creates a Submit Handler which parses the data inputed into main text box
 	 * 
-	 * @param schedule is the list of the input from main
+	 * @param schedule - the list of the input from main
 	 */
 	public SubmitHandler(String[] schedule) {
 		int i = 1;

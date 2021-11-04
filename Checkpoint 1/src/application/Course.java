@@ -12,7 +12,19 @@ public class Course {
 	private double dayCode = 0;
 	private double startCode = 0;
 	private double endCode = 0;
-
+	
+	/**
+	 * Creates a course object
+	 * 
+	 * @param code - the course code
+	 * @param name - the course name
+	 * @param professor - the course professor
+	 * @param building - the course building
+	 * @param room - the course room
+	 * @param startTime - the time the course starts
+	 * @param endTime - the time the course ends
+	 * @param days - the days the course occurs
+	 */
 	public Course(String code, String name, String professor, String building, String room, String startTime,
 			String endTime, String days) {
 		classCode = code;
@@ -24,64 +36,88 @@ public class Course {
 		this.endTime = endTime;
 		this.days = days;
 		createStartCode(startTime);
+		createEndCode(endTime);
 	}
 	
+	/**
+	 * Creates the start code for the course in order to judge conflicts better
+	 * 
+	 * @param startTime - the time the course starts
+	 * @return the time the class starts in the form of a double
+	 */
 	private double createStartCode(String startTime) {
-		switch (startTime) {
-		case "8:00AM":
-			startCode = 8;
-			break;
-		case "8:20AM":
-			startCode = 8.2;
-			break;
-		case "8:30AM":
-			startCode = 8.3;
-			break;
-		case "9:00AM":
-			startCode = 9;
-			break;
-		case "9:20AM":
-			startCode = 9.2;
-			break;
-		case "10:00AM":
-			startCode = 10;
-			break;
-		case "10:15AM":
-			startCode = 10.15;
-			break;
-		case "10:20AM":
-			startCode = 10.2;
-			break;
-		case "10:25AM":
-			startCode = 10.25;
-			break;
-		case "10:30AM":
-			startCode = 10.3;
-			break;
-		case "12:30PM":
-			startCode = 12.3;
-			break;
-		case "1:00PM":
-			startCode = 1;
-			break;
-		case "1:15PM":
-			startCode = 1.15;
-			break;
-		case "2:15PM":
-			startCode = 2.15;
-			break;
+		int startInt = 0;
+		double startDouble = 0;
+		if (startTime.substring(0, 2).contains("10") || startTime.substring(0, 2).contains("11") || startTime.substring(0, 2).contains("12")) {
+			startInt = Integer.parseInt(startTime.substring(0, 2));
+			startDouble = Double.parseDouble(startTime.substring(3, 5));
+		} else {
+			startInt = Integer.parseInt(startTime.substring(0, 1));
+			startDouble = Double.parseDouble(startTime.substring(2, 4));
 		}
+		startDouble = startDouble / 100;
+		startCode = startInt + startDouble;
 		return startCode;
 	}
 	
+	/**
+	 * Creates the end code for the course in order to judge conflicts better
+	 * 
+	 * @param endTime - the time the class ends
+	 * @return the time the class ends in the form of a double
+	 */
+	private double createEndCode(String endTime) {
+		int endInt = 0;
+		double endDouble = 0;
+		if (endTime.substring(0, 2).contains("10") || endTime.substring(0, 2).contains("11") || endTime.substring(0, 2).contains("12")) {
+			endInt = Integer.parseInt(endTime.substring(0, 2));
+			endDouble = Double.parseDouble(endTime.substring(3, 5));
+		} else {
+			endInt = Integer.parseInt(endTime.substring(0, 1));
+			endDouble = Double.parseDouble(endTime.substring(2, 4));
+		}
+		endDouble = endDouble / 100;
+		endCode = endInt + endDouble;
+		return endCode;
+	}
+	
+	/**
+	 * Gives the course name
+	 * 
+	 * @return the course name
+	 */
 	public String getName() {
 		return className;
 	}
 	
+	/**
+	 * Gives the course days
+	 * 
+	 * @return the course days
+	 */
 	public String getDays() {
 		return days;
 	}
+	
+	/**
+	 * Gives the course start code
+	 * 
+	 * @return the course start code
+	 */
+	public double getStartCode() {
+		return startCode;
+	}
+	
+	/**
+	 * Gives the course end code
+	 * 
+	 * @return the course end code
+	 */
+	public double getEndCode() {
+		return endCode;
+	}
 
+	@Override
 	public String toString() {
 		return classCode + ", " + className + ", " + building + ", " + room + ", " + professor + ", " + startTime + ", " + endTime + ", " + days;
 	}
