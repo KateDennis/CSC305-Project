@@ -32,7 +32,7 @@ public class Main extends Application {
 			//name of text box 
 			Label schedule = new Label("Insert Class Schedule:");
 			gridPaneMain.add(schedule, 0, 2);
-
+ 
 			//Creates text box
 			TextArea userTextField = new TextArea();
 			gridPaneMain.add(userTextField, 1, 2);
