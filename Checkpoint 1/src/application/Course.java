@@ -12,7 +12,19 @@ public class Course {
 	private double dayCode = 0;
 	private double startCode = 0;
 	private double endCode = 0;
-
+	
+	/**
+	 * Creates a course object
+	 * 
+	 * @param code - the course code
+	 * @param name - the course name
+	 * @param professor - the course professor
+	 * @param building - the course building
+	 * @param room - the course room
+	 * @param startTime - the time the course starts
+	 * @param endTime - the time the course ends
+	 * @param days - the days the course occurs
+	 */
 	public Course(String code, String name, String professor, String building, String room, String startTime,
 			String endTime, String days) {
 		classCode = code;
@@ -27,6 +39,12 @@ public class Course {
 		createEndCode(endTime);
 	}
 	
+	/**
+	 * Creates the start code for the course in order to judge conflicts better
+	 * 
+	 * @param startTime - the time the course starts
+	 * @return the time the class starts in the form of a double
+	 */
 	private double createStartCode(String startTime) {
 		int startInt = 0;
 		double startDouble = 0;
@@ -42,6 +60,12 @@ public class Course {
 		return startCode;
 	}
 	
+	/**
+	 * Creates the end code for the course in order to judge conflicts better
+	 * 
+	 * @param endTime - the time the class ends
+	 * @return the time the class ends in the form of a double
+	 */
 	private double createEndCode(String endTime) {
 		int endInt = 0;
 		double endDouble = 0;
