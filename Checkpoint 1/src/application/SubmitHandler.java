@@ -74,7 +74,7 @@ public class SubmitHandler {
 		list.add("ASIA");
 		list.add("ASTR");
 		list.add("BIOL");
-		list.add("BUSM");
+		list.add("BUSN");
 		list.add("CHEM");
 		list.add("CHNS");
 		list.add("CHST");
