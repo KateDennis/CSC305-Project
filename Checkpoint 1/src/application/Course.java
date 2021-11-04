@@ -24,54 +24,37 @@ public class Course {
 		this.endTime = endTime;
 		this.days = days;
 		createStartCode(startTime);
+		createEndCode(endTime);
 	}
 	
 	private double createStartCode(String startTime) {
-		switch (startTime) {
-		case "8:00AM":
-			startCode = 8;
-			break;
-		case "8:20AM":
-			startCode = 8.2;
-			break;
-		case "8:30AM":
-			startCode = 8.3;
-			break;
-		case "9:00AM":
-			startCode = 9;
-			break;
-		case "9:20AM":
-			startCode = 9.2;
-			break;
-		case "10:00AM":
-			startCode = 10;
-			break;
-		case "10:15AM":
-			startCode = 10.15;
-			break;
-		case "10:20AM":
-			startCode = 10.2;
-			break;
-		case "10:25AM":
-			startCode = 10.25;
-			break;
-		case "10:30AM":
-			startCode = 10.3;
-			break;
-		case "12:30PM":
-			startCode = 12.3;
-			break;
-		case "1:00PM":
-			startCode = 1;
-			break;
-		case "1:15PM":
-			startCode = 1.15;
-			break;
-		case "2:15PM":
-			startCode = 2.15;
-			break;
+		int startInt = 0;
+		double startDouble = 0;
+		if (startTime.substring(0, 2).contains("10") || startTime.substring(0, 2).contains("11") || startTime.substring(0, 2).contains("12")) {
+			startInt = Integer.parseInt(startTime.substring(0, 2));
+			startDouble = Double.parseDouble(startTime.substring(3, 5));
+		} else {
+			startInt = Integer.parseInt(startTime.substring(0, 1));
+			startDouble = Double.parseDouble(startTime.substring(2, 4));
 		}
+		startDouble = startDouble / 100;
+		startCode = startInt + startDouble;
 		return startCode;
+	}
+	
+	private double createEndCode(String endTime) {
+		int endInt = 0;
+		double endDouble = 0;
+		if (endTime.substring(0, 2).contains("10") || endTime.substring(0, 2).contains("11") || endTime.substring(0, 2).contains("12")) {
+			endInt = Integer.parseInt(endTime.substring(0, 2));
+			endDouble = Double.parseDouble(endTime.substring(3, 5));
+		} else {
+			endInt = Integer.parseInt(endTime.substring(0, 1));
+			endDouble = Double.parseDouble(endTime.substring(2, 4));
+		}
+		endDouble = endDouble / 100;
+		endCode = endInt + endDouble;
+		return endCode;
 	}
 	
 	public String getName() {
