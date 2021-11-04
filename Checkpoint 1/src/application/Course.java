@@ -9,7 +9,7 @@ public class Course {
 	private String professor = new String();
 	private String building = new String();
 	private String room = new String();
-	private double startCode = 0;
+	private double startCode = 0; 
 	private double endCode = 0;
 
 	/**

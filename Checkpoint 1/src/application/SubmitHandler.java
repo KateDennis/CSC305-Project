@@ -13,7 +13,7 @@ public class SubmitHandler {
 	 */
 	public SubmitHandler(String[] schedule) {
 		int i = 1;
-		String code = "";
+		String code = ""; 
 		String name = "";
 		String professor = "";
 		String building = "";
