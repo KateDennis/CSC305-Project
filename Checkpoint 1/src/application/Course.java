@@ -81,14 +81,43 @@ public class Course {
 		return endCode;
 	}
 	
+	/**
+	 * Gives the course name
+	 * 
+	 * @return the course name
+	 */
 	public String getName() {
 		return className;
 	}
 	
+	/**
+	 * Gives the course days
+	 * 
+	 * @return the course days
+	 */
 	public String getDays() {
 		return days;
 	}
+	
+	/**
+	 * Gives the course start code
+	 * 
+	 * @return the course start code
+	 */
+	public double getStartCode() {
+		return startCode;
+	}
+	
+	/**
+	 * Gives the course end code
+	 * 
+	 * @return the course end code
+	 */
+	public double getEndCode() {
+		return endCode;
+	}
 
+	@Override
 	public String toString() {
 		return classCode + ", " + className + ", " + building + ", " + room + ", " + professor + ", " + startTime + ", " + endTime + ", " + days;
 	}
