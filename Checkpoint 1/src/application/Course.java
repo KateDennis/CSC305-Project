@@ -156,21 +156,101 @@ public class Course {
 				return 1;
 			} else if (this.endCode == other.startCode) {
 				return 1;
+			} else if (this.startCode > other.startCode && this.startCode < other.endCode) {
+				return 1;
+			} else if (other.startCode > this.startCode && other.startCode < this.endCode) {
+				return 1;
+			} else if (this.endCode > other.startCode && this.endCode < other.endCode) {
+				return 1;
+			} else if (other.endCode > this.startCode && other.endCode < this.endCode) {
+				return 1;
 			} else {
 				return -1;
 			}
 			
 		} else if (this.days.contains("Tu") && other.days.contains("Tu")) {
-			
+			if (this.startCode == other.startCode) {
+				return 1;
+			} else if (this.endCode == other.endCode) {
+				return 1;
+			} else if (this.startCode == other.endCode) {
+				return 1;
+			} else if (this.endCode == other.startCode) {
+				return 1;
+			} else if (this.startCode > other.startCode && this.startCode < other.endCode) {
+				return 1;
+			} else if (other.startCode > this.startCode && other.startCode < this.endCode) {
+				return 1;
+			} else if (this.endCode > other.startCode && this.endCode < other.endCode) {
+				return 1;
+			} else if (other.endCode > this.startCode && other.endCode < this.endCode) {
+				return 1;
+			} else {
+				return -1;
+			}
 			
 		} else if (this.days.contains("W") && other.days.contains("W")) {
-			
+			if (this.startCode == other.startCode) {
+				return 1;
+			} else if (this.endCode == other.endCode) {
+				return 1;
+			} else if (this.startCode == other.endCode) {
+				return 1;
+			} else if (this.endCode == other.startCode) {
+				return 1;
+			} else if (this.startCode > other.startCode && this.startCode < other.endCode) {
+				return 1;
+			} else if (other.startCode > this.startCode && other.startCode < this.endCode) {
+				return 1;
+			} else if (this.endCode > other.startCode && this.endCode < other.endCode) {
+				return 1;
+			} else if (other.endCode > this.startCode && other.endCode < this.endCode) {
+				return 1;
+			} else {
+				return -1;
+			}
 			
 		} else if (this.days.contains("Th") && other.days.contains("Th")) {
-			
+			if (this.startCode == other.startCode) {
+				return 1;
+			} else if (this.endCode == other.endCode) {
+				return 1;
+			} else if (this.startCode == other.endCode) {
+				return 1;
+			} else if (this.endCode == other.startCode) {
+				return 1;
+			} else if (this.startCode > other.startCode && this.startCode < other.endCode) {
+				return 1;
+			} else if (other.startCode > this.startCode && other.startCode < this.endCode) {
+				return 1;
+			} else if (this.endCode > other.startCode && this.endCode < other.endCode) {
+				return 1;
+			} else if (other.endCode > this.startCode && other.endCode < this.endCode) {
+				return 1;
+			} else {
+				return -1;
+			}
 			
 		} else if (this.days.contains("F") && other.days.contains("F")) {
-			
+			if (this.startCode == other.startCode) {
+				return 1;
+			} else if (this.endCode == other.endCode) {
+				return 1;
+			} else if (this.startCode == other.endCode) {
+				return 1;
+			} else if (this.endCode == other.startCode) {
+				return 1;
+			} else if (this.startCode > other.startCode && this.startCode < other.endCode) {
+				return 1;
+			} else if (other.startCode > this.startCode && other.startCode < this.endCode) {
+				return 1;
+			} else if (this.endCode > other.startCode && this.endCode < other.endCode) {
+				return 1;
+			} else if (other.endCode > this.startCode && other.endCode < this.endCode) {
+				return 1;
+			} else {
+				return -1;
+			}
 		}
 		return -1;
 	}

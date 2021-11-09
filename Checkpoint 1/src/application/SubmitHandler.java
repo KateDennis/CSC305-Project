@@ -61,6 +61,10 @@ public class SubmitHandler {
 
 	}
 	
+	public ArrayList<Course> getCourseList() {
+		return courseList;
+	}
+	
 	@Override
 	public String toString() {
 		return courseList.toString();
