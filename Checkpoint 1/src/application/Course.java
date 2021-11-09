@@ -9,7 +9,7 @@ public class Course {
 	private String professor = new String();
 	private String building = new String();
 	private String room = new String();
-	private double startCode = 0; 
+	private double startCode = 0;
 	private double endCode = 0;
 
 	/**
@@ -57,6 +57,9 @@ public class Course {
 		}
 		startDouble = startDouble / 100;
 		startCode = startInt + startDouble;
+		if (startTime.contains("pm")) {
+			startCode = startCode + 12;
+		}
 		return startCode;
 	}
 
@@ -79,6 +82,9 @@ public class Course {
 		}
 		endDouble = endDouble / 100;
 		endCode = endInt + endDouble;
+		if (endTime.contains("pm")) {
+			endCode = endCode + 12;
+		}
 		return endCode;
 	}
 
@@ -140,7 +146,7 @@ public class Course {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param other
@@ -167,7 +173,7 @@ public class Course {
 			} else {
 				return -1;
 			}
-			
+
 		} else if (this.days.contains("Tu") && other.days.contains("Tu")) {
 			if (this.startCode == other.startCode) {
 				return 1;
@@ -188,7 +194,7 @@ public class Course {
 			} else {
 				return -1;
 			}
-			
+
 		} else if (this.days.contains("W") && other.days.contains("W")) {
 			if (this.startCode == other.startCode) {
 				return 1;
@@ -209,7 +215,7 @@ public class Course {
 			} else {
 				return -1;
 			}
-			
+
 		} else if (this.days.contains("Th") && other.days.contains("Th")) {
 			if (this.startCode == other.startCode) {
 				return 1;
@@ -230,7 +236,7 @@ public class Course {
 			} else {
 				return -1;
 			}
-			
+
 		} else if (this.days.contains("F") && other.days.contains("F")) {
 			if (this.startCode == other.startCode) {
 				return 1;
