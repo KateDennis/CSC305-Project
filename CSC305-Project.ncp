@@ -1,0 +1,101 @@
+<Project>
+  <Name>CSC305-Project</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Inheritance Diagram</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>ScheduleGenerator</Name>
+        <Access>Public</Access>
+        <Location left="752" top="570" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void Main()</Member>
+        <Member type="Method">public void start()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Course</Name>
+        <Access>Public</Access>
+        <Location left="436" top="27" />
+        <Size width="162" height="417" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">String newField</Member>
+        <Member type="Field">String className</Member>
+        <Member type="Field">String startTime</Member>
+        <Member type="Field">String endTime</Member>
+        <Member type="Field">String days</Member>
+        <Member type="Field">String professor</Member>
+        <Member type="Field">String building</Member>
+        <Member type="Field">String room</Member>
+        <Member type="Field">Double startCode</Member>
+        <Member type="Field">Double endCode</Member>
+        <Member type="Constructor">public Course()</Member>
+        <Member type="Method">private Double createsSmartCode()</Member>
+        <Member type="Method">private Double createsEndCode()</Member>
+        <Member type="Method">public String getName()</Member>
+        <Member type="Method">public String getDays()</Member>
+        <Member type="Method">public Double getStartCode()</Member>
+        <Member type="Method">public Double getEndCode()</Member>
+        <Member type="Method">public boolean equals()</Member>
+        <Member type="Method">public int compareTo()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SubmitHandler</Name>
+        <Access>Public</Access>
+        <Location left="752" top="205" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">ArrayList&lt;Course&gt; courseList</Member>
+        <Member type="Constructor">public SubmitHandler()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Member type="Method">public ArrayList&lt;String&gt; createCourseCodeList()</Member>
+        <Member type="Method">public ArrayList&lt;String&gt; createBuildingList()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>View</Name>
+        <Access>Public</Access>
+        <Location left="1097" top="250" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public View()</Member>
+        <Member type="Method">public static void main()</Member>
+        <Member type="Method">public void start()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>509</X>
+          <Y>491</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
