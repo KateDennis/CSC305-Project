@@ -1,5 +1,4 @@
 package application;
-	
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -10,8 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
-
-public class Main extends Application {
+public class ScheduleGenerator extends Application{
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -74,4 +72,6 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+
 }
