@@ -95,7 +95,7 @@ public class View extends Application {
         rectangle.setHeight(400);
         rectangle.setStroke(Color.TRANSPARENT);
         rectangle.setFill(Color.valueOf("#00ffff"));
-		     
+		//notes or something
 		//}
 		
 	
