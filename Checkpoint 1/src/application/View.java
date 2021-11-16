@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane; 
@@ -20,18 +21,6 @@ public class View extends Application {
 		one.setPadding(new Insets(5,5,5,5));
 		one.setVgap(20);
 		one.setHgap(20);
-		
-		// I wish there was a better
-		// way to do this but whatever
-		
-		double side = 20.0;
-		Polygon sq = new Polygon();
-		sq.getPoints().addAll(new Double[] {
-				0.0,0.0,
-				side,0.0,
-				side,side,
-				0.0,side
-		});
 		
 		Color lightRed = Color.rgb(255, 100, 100);
 		sq.setFill(lightRed);
@@ -87,15 +76,23 @@ public class View extends Application {
 
 		String weekday = "Monday";
 		//if(weekday == "Monday") {
-
-        Rectangle rectangle = new Rectangle();
-        rectangle.setX(200);
-        rectangle.setY(200);
-        rectangle.setWidth(300);
-        rectangle.setHeight(400);
-        rectangle.setStroke(Color.TRANSPARENT);
-        rectangle.setFill(Color.valueOf("#00ffff"));
-		//notes or something
+	        // set title for the stage
+	        stage.setTitle("creating Rectangle");
+	 
+	        // create a rectangle
+	        Rectangle rectangle = new Rectangle(100.0d, 100.0d, 120.0d, 80.0d);
+	 
+	        // create a Group
+	        Group group = new Group(rectangle);
+	 
+	        // create a scene
+	        Scene scene = new Scene(group, 500, 300);
+	 
+	        // set the scene
+	        stage.setScene(scene);
+	 
+	        stage.show();
+	    }
 		//}
 		
 	
