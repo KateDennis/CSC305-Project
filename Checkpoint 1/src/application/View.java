@@ -23,7 +23,7 @@ public class View extends Application {
 		this.primaryStage = primaryStage;
 		this.courseList = courseList;
 	}
-
+ 
 	public void showStage() {
 		primaryStage.show();
 	}
