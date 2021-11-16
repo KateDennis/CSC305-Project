@@ -25,7 +25,7 @@ public class View extends Application {
 		gridPaneMain.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(gridPaneMain, 900, 300);
 		this.primaryStage = primaryStage;
-		primaryStage.setTitle("My Schedule");
+		primaryStage.setTitle("My Schedule"); 
 		gridPaneMain.setPadding(new Insets(10));
 		gridPaneMain.setHgap(15);
 		gridPaneMain.setVgap(15);
