@@ -13,7 +13,7 @@ public class SubmitHandler {
 	 */
 	public SubmitHandler(String[] schedule) {
 		int i = 1;
-		String code = "";
+		String code = ""; 
 		String name = "";
 		String professor = "";
 		String building = "";
@@ -59,6 +59,10 @@ public class SubmitHandler {
 		// FOR TESTING PURPOSES ONLY
 		//System.out.println(courseList.toString());
 
+	}
+	
+	public ArrayList<Course> getCourseList() {
+		return courseList;
 	}
 	
 	@Override

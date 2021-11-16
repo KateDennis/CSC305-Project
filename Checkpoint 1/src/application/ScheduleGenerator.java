@@ -1,5 +1,4 @@
 package application;
-	
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -10,8 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
-
-public class Main extends Application {
+public class ScheduleGenerator extends Application{
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -43,18 +41,13 @@ public class Main extends Application {
 			
 			//Submit Button
 			submit.setOnAction(value -> {
-				//pop-up window
-				Stage popUpStage = new Stage();
-				popUpStage.setTitle("Schedule View");
-				GridPane gridPaneMessage = new GridPane();
-				Scene scenePopUp = new Scene(gridPaneMessage, 300, 200);
-				popUpStage.setScene(scenePopUp);
-				popUpStage.show(); 
 				
 				//Storing data from class schedule
 				String scheduleText = userTextField.getText();
 				String[] classSchedule = scheduleText.split("\n");
 				SubmitHandler submitted = new SubmitHandler(classSchedule);
+				
+				View calenderView = new View(primaryStage, submitted);
 				
 				//FOR TESTING PURPOSES ONLY
 				System.out.println(submitted.toString());
@@ -72,4 +65,6 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+
 }

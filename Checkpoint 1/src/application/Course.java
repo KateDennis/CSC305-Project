@@ -9,21 +9,20 @@ public class Course {
 	private String professor = new String();
 	private String building = new String();
 	private String room = new String();
-	private double dayCode = 0;
 	private double startCode = 0;
 	private double endCode = 0;
-	
+
 	/**
 	 * Creates a course object
 	 * 
-	 * @param code - the course code
-	 * @param name - the course name
+	 * @param code      - the course code
+	 * @param name      - the course name
 	 * @param professor - the course professor
-	 * @param building - the course building
-	 * @param room - the course room
+	 * @param building  - the course building
+	 * @param room      - the course room
 	 * @param startTime - the time the course starts
-	 * @param endTime - the time the course ends
-	 * @param days - the days the course occurs
+	 * @param endTime   - the time the course ends
+	 * @param days      - the days the course occurs
 	 */
 	public Course(String code, String name, String professor, String building, String room, String startTime,
 			String endTime, String days) {
@@ -38,7 +37,7 @@ public class Course {
 		createStartCode(startTime);
 		createEndCode(endTime);
 	}
-	
+
 	/**
 	 * Creates the start code for the course in order to judge conflicts better
 	 * 
@@ -48,7 +47,8 @@ public class Course {
 	private double createStartCode(String startTime) {
 		int startInt = 0;
 		double startDouble = 0;
-		if (startTime.substring(0, 2).contains("10") || startTime.substring(0, 2).contains("11") || startTime.substring(0, 2).contains("12")) {
+		if (startTime.substring(0, 2).contains("10") || startTime.substring(0, 2).contains("11")
+				|| startTime.substring(0, 2).contains("12")) {
 			startInt = Integer.parseInt(startTime.substring(0, 2));
 			startDouble = Double.parseDouble(startTime.substring(3, 5));
 		} else {
@@ -57,9 +57,12 @@ public class Course {
 		}
 		startDouble = startDouble / 100;
 		startCode = startInt + startDouble;
+		if (startTime.contains("pm")) {
+			startCode = startCode + 12;
+		}
 		return startCode;
 	}
-	
+
 	/**
 	 * Creates the end code for the course in order to judge conflicts better
 	 * 
@@ -69,7 +72,8 @@ public class Course {
 	private double createEndCode(String endTime) {
 		int endInt = 0;
 		double endDouble = 0;
-		if (endTime.substring(0, 2).contains("10") || endTime.substring(0, 2).contains("11") || endTime.substring(0, 2).contains("12")) {
+		if (endTime.substring(0, 2).contains("10") || endTime.substring(0, 2).contains("11")
+				|| endTime.substring(0, 2).contains("12")) {
 			endInt = Integer.parseInt(endTime.substring(0, 2));
 			endDouble = Double.parseDouble(endTime.substring(3, 5));
 		} else {
@@ -78,9 +82,12 @@ public class Course {
 		}
 		endDouble = endDouble / 100;
 		endCode = endInt + endDouble;
+		if (endTime.contains("pm")) {
+			endCode = endCode + 12;
+		}
 		return endCode;
 	}
-	
+
 	/**
 	 * Gives the course name
 	 * 
@@ -89,7 +96,7 @@ public class Course {
 	public String getName() {
 		return className;
 	}
-	
+
 	/**
 	 * Gives the course days
 	 * 
@@ -98,7 +105,7 @@ public class Course {
 	public String getDays() {
 		return days;
 	}
-	
+
 	/**
 	 * Gives the course start code
 	 * 
@@ -107,7 +114,7 @@ public class Course {
 	public double getStartCode() {
 		return startCode;
 	}
-	
+
 	/**
 	 * Gives the course end code
 	 * 
@@ -118,7 +125,145 @@ public class Course {
 	}
 
 	@Override
+	public boolean equals(Object object) {
+		if (object == this) {
+			return true;
+		}
+
+		if (!(object instanceof Course)) {
+			return false;
+		}
+
+		Course other = (Course) object;
+
+		if (this.classCode.equals(other.classCode) && this.className.equals(other.className)
+				&& this.startTime.equals(other.startTime) && this.endTime.equals(other.endTime)
+				&& this.days.equals(other.days) && this.professor.equals(other.professor)
+				&& this.building.equals(other.building) && this.room.equals(other.room)
+				&& this.startCode == other.startCode && this.endCode == other.endCode) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * 
+	 * @param other
+	 * @return
+	 */
+	public int compareTo(Course other) {
+		if (this.days.contains("M") && other.days.contains("M")) {
+			if (this.startCode == other.startCode) {
+				return 1;
+			} else if (this.endCode == other.endCode) {
+				return 1;
+			} else if (this.startCode == other.endCode) {
+				return 1;
+			} else if (this.endCode == other.startCode) {
+				return 1;
+			} else if (this.startCode > other.startCode && this.startCode < other.endCode) {
+				return 1;
+			} else if (other.startCode > this.startCode && other.startCode < this.endCode) {
+				return 1;
+			} else if (this.endCode > other.startCode && this.endCode < other.endCode) {
+				return 1;
+			} else if (other.endCode > this.startCode && other.endCode < this.endCode) {
+				return 1;
+			} else {
+				return -1;
+			}
+
+		} else if (this.days.contains("Tu") && other.days.contains("Tu")) {
+			if (this.startCode == other.startCode) {
+				return 1;
+			} else if (this.endCode == other.endCode) {
+				return 1;
+			} else if (this.startCode == other.endCode) {
+				return 1;
+			} else if (this.endCode == other.startCode) {
+				return 1;
+			} else if (this.startCode > other.startCode && this.startCode < other.endCode) {
+				return 1;
+			} else if (other.startCode > this.startCode && other.startCode < this.endCode) {
+				return 1;
+			} else if (this.endCode > other.startCode && this.endCode < other.endCode) {
+				return 1;
+			} else if (other.endCode > this.startCode && other.endCode < this.endCode) {
+				return 1;
+			} else {
+				return -1;
+			}
+
+		} else if (this.days.contains("W") && other.days.contains("W")) {
+			if (this.startCode == other.startCode) {
+				return 1;
+			} else if (this.endCode == other.endCode) {
+				return 1;
+			} else if (this.startCode == other.endCode) {
+				return 1;
+			} else if (this.endCode == other.startCode) {
+				return 1;
+			} else if (this.startCode > other.startCode && this.startCode < other.endCode) {
+				return 1;
+			} else if (other.startCode > this.startCode && other.startCode < this.endCode) {
+				return 1;
+			} else if (this.endCode > other.startCode && this.endCode < other.endCode) {
+				return 1;
+			} else if (other.endCode > this.startCode && other.endCode < this.endCode) {
+				return 1;
+			} else {
+				return -1;
+			}
+
+		} else if (this.days.contains("Th") && other.days.contains("Th")) {
+			if (this.startCode == other.startCode) {
+				return 1;
+			} else if (this.endCode == other.endCode) {
+				return 1;
+			} else if (this.startCode == other.endCode) {
+				return 1;
+			} else if (this.endCode == other.startCode) {
+				return 1;
+			} else if (this.startCode > other.startCode && this.startCode < other.endCode) {
+				return 1;
+			} else if (other.startCode > this.startCode && other.startCode < this.endCode) {
+				return 1;
+			} else if (this.endCode > other.startCode && this.endCode < other.endCode) {
+				return 1;
+			} else if (other.endCode > this.startCode && other.endCode < this.endCode) {
+				return 1;
+			} else {
+				return -1;
+			}
+
+		} else if (this.days.contains("F") && other.days.contains("F")) {
+			if (this.startCode == other.startCode) {
+				return 1;
+			} else if (this.endCode == other.endCode) {
+				return 1;
+			} else if (this.startCode == other.endCode) {
+				return 1;
+			} else if (this.endCode == other.startCode) {
+				return 1;
+			} else if (this.startCode > other.startCode && this.startCode < other.endCode) {
+				return 1;
+			} else if (other.startCode > this.startCode && other.startCode < this.endCode) {
+				return 1;
+			} else if (this.endCode > other.startCode && this.endCode < other.endCode) {
+				return 1;
+			} else if (other.endCode > this.startCode && other.endCode < this.endCode) {
+				return 1;
+			} else {
+				return -1;
+			}
+		}
+		return -1;
+	}
+
+	@Override
 	public String toString() {
-		return classCode + ", " + className + ", " + building + ", " + room + ", " + professor + ", " + startTime + ", " + endTime + ", " + days;
+		return classCode + ", " + className + ", " + building + ", " + room + ", " + professor + ", " + startTime + ", "
+				+ endTime + ", " + days;
 	}
 }
