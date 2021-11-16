@@ -41,13 +41,6 @@ public class ScheduleGenerator extends Application{
 			
 			//Submit Button
 			submit.setOnAction(value -> {
-				//pop-up window
-				Stage popUpStage = new Stage();
-				popUpStage.setTitle("Schedule View"); 
-				GridPane gridPaneMessage = new GridPane();
-				Scene scenePopUp = new Scene(gridPaneMessage, 300, 200);
-				popUpStage.setScene(scenePopUp);
-				popUpStage.show(); 
 				
 				//Storing data from class schedule
 				String scheduleText = userTextField.getText();
