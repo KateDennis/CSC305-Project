@@ -1,5 +1,7 @@
 package application;
 
+import java.awt.Rectangle;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -7,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;  
 
 public class View extends Application {
@@ -80,11 +83,22 @@ public class View extends Application {
 		one.add(thu,4,0);
 		one.add(fri,5,0);
 		
+	
+
+		String weekday = "Monday";
+		//if(weekday == "Monday") {
+
+        Rectangle rectangle = new Rectangle();
+        rectangle.setX(200);
+        rectangle.setY(200);
+        rectangle.setWidth(300);
+        rectangle.setHeight(400);
+        rectangle.setStroke(Color.TRANSPARENT);
+        rectangle.setFill(Color.valueOf("#00ffff"));
+		     
+		//}
 		
-		
-		
-		
-		
+	
 		
 		Scene sc = new Scene(one,800,500);
 		s.setScene(sc);
