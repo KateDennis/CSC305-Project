@@ -148,9 +148,10 @@ public class Course {
 	}
 
 	/**
+	 * Compares the times of one course to another
 	 * 
-	 * @param other
-	 * @return
+	 * @param other - the course being compared
+	 * @return if the courses conflict with each other
 	 */
 	public int compareTo(Course other) {
 		if (this.days.contains("M") && other.days.contains("M")) {
