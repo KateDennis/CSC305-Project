@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -15,50 +16,42 @@ import javafx.stage.Stage;
 
 public class View extends Application {
 	
-	public View(Stage s, SubmitHandler courseList) {
+	private Stage primaryStage;
+	
+	public View(Stage primaryStage, SubmitHandler courseList) {
 		
-		GridPane one = new GridPane();
-		one.setPadding(new Insets(5,5,5,5));
-		one.setVgap(20);
-		one.setHgap(20);
+		//make gridPaneMain
+		GridPane gridPaneMain = new GridPane();
+		gridPaneMain.setAlignment(Pos.CENTER);
+		Scene scene = new Scene(gridPaneMain, 900, 300);
+		this.primaryStage = primaryStage;
+		primaryStage.setTitle("My Schedule");
+		gridPaneMain.setPadding(new Insets(10));
+		gridPaneMain.setHgap(15);
+		gridPaneMain.setVgap(15);
 		
-		Color lightRed = Color.rgb(255, 100, 100);
-		sq.setFill(lightRed);
-		//one.add(sq, 0, 0);
+		//TimeLabel along side of gridPaneMain
+		Label TimeLabel8am = new Label("8 am");
+		Label TimeLabel9am = new Label("9 am");
+		Label TimeLabel10am = new Label("10 am");
+		Label TimeLabel11am = new Label("11 am");
+		Label TimeLabel12pm = new Label("12 noon");
+		Label TimeLabel1pm = new Label("1 pm");
+		Label TimeLabel2pm = new Label("2 pm");
+		Label TimeLabel3pm = new Label("3 pm");
+		Label TimeLabel4pm = new Label("4 pm");
+		Label TimeLabel5pm = new Label("5 pm");
 		
-		Polygon sq2 = new Polygon();
-		sq2.getPoints().addAll(new Double[] {
-				0.0,0.0,
-				side,0.0,
-				side,side,
-				0.0,side
-		});
-		
-		Color lightGreen = Color.rgb(100, 255, 100);
-		sq2.setFill(lightGreen);
-		//one.add(sq2, 1, 0);
-		
-		Label aa = new Label("8 am");
-		Label bb = new Label("9 am");
-		Label cc = new Label("10 am");
-		Label dd = new Label("11 am");
-		Label ee = new Label("12 noon");
-		Label ff = new Label("1 pm");
-		Label gg = new Label("2 pm");
-		Label hh = new Label("3 pm");
-		Label ii = new Label("4 pm");
-		Label jj = new Label("5 pm");
-		
-		one.add(aa,0,1);
-		one.add(bb,0,2);
-		one.add(cc,0,3);
-		one.add(dd,0,4);
-		one.add(ee,0,5);
-		one.add(ff,0,6);
-		one.add(gg,0,7);
-		one.add(hh,0,8);
-		one.add(ii,0,9);
-		one.add(jj,0,10);
+		gridPaneMain.add(TimeLabel8am,0,1);
+		gridPaneMain.add(TimeLabel9am,0,2);
+		gridPaneMain.add(TimeLabel10am,0,3);
+		gridPaneMain.add(TimeLabel11am,0,4);
+		gridPaneMain.add(TimeLabel12pm,0,5);
+		gridPaneMain.add(TimeLabel1pm,0,6);
+		gridPaneMain.add(TimeLabel2pm,0,7);
+		gridPaneMain.add(TimeLabel3pm,0,8);
+		gridPaneMain.add(TimeLabel4pm,0,9);
+		gridPaneMain.add(TimeLabel5pm,0,10);
 		
 		Label mon = new Label("Monday");
 		Label tue = new Label("Tuesday");
@@ -66,11 +59,11 @@ public class View extends Application {
 		Label thu = new Label("Thursday");
 		Label fri = new Label("Friday");
 		
-		one.add(mon,1,0);
-		one.add(tue,2,0);
-		one.add(wed,3,0);
-		one.add(thu,4,0);
-		one.add(fri,5,0);
+		gridPaneMain.add(mon,1,0);
+		gridPaneMain.add(tue,2,0);
+		gridPaneMain.add(wed,3,0);
+		gridPaneMain.add(thu,4,0);
+		gridPaneMain.add(fri,5,0);
 		
 	
 
@@ -88,24 +81,14 @@ public class View extends Application {
 	        // create a scene
 	        Scene scene = new Scene(group, 500, 300);
 	 
-	        // set the scene
-	        stage.setScene(scene);
-	 
-	        stage.show();
+	        
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
 	    }
 		//}
-		
 	
-		
-		Scene sc = new Scene(one,800,500);
-		s.setScene(sc);
-		s.show();
-	}
-	
-	// the end
-	public static void main(String[] args) {
-		
-		launch(args);
+	public void showStage() {
+		primaryStage.show();
 	}
 
 	@Override
@@ -113,4 +96,5 @@ public class View extends Application {
 		// TODO Auto-generated method stub
 		
 	}
-}
+ }
+	

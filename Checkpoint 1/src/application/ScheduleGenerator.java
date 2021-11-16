@@ -49,6 +49,7 @@ public class ScheduleGenerator extends Application{
 				
 				View calenderView = new View(primaryStage, submitted);
 				
+				
 				//FOR TESTING PURPOSES ONLY
 				System.out.println(submitted.toString());
 				
