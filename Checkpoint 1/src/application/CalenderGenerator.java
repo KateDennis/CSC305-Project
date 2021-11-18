@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -51,8 +52,28 @@ public class CalenderGenerator {
 			Course days = courseList.get(i + 5);
 			Course startTime = courseList.get(i + 6);
 			Course endTime = courseList.get(i + 7);
+			
+			
+			
 		}
 
+	}
+	
+	public Group buildRectangle(Group root, int x, int y) {
+		Rectangle rectangle = new Rectangle();
+		rectangle.setX(x);
+		rectangle.setY(y);
+		rectangle.setWidth(x);
+		rectangle.setHeight(y);
+		root.getChildren().add(rectangle);
+		rectangle.setFill(Color.BLUE);
+		
+	}
+	public Group titleOfClass(Group root, int y) {
+		Text classname = new Text();
+		classname.setY(y);
+		root.getChildren().add(classname);
+		
 	}
 
 	/**
@@ -326,6 +347,8 @@ public class CalenderGenerator {
 		this.addTimesToGroup(root);
 		this.addLinesToGroup(root);
 		this.addAugieImageToGroup(root);
+		this.buildRectangle(root, x, y);
+		this.titleOfClass(root, y);
 
 		primaryStage.setScene(scene);
 	}
