@@ -1,3 +1,7 @@
+//DO NOT USE THIS FILE FOR THE PROJECT. ONLY HERE FOR TRANSFERING PURPOSES
+//DOES NOT WORK!!!
+
+
 package application;
 
 import java.awt.Rectangle;
