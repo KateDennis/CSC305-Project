@@ -68,6 +68,7 @@ public class CalenderGenerator {
 		root.getChildren().add(rectangle);
 		rectangle.setFill(Color.BLUE);
 		
+		
 	}
 	public Group titleOfClass(Group root, int y) {
 		Text classname = new Text();
