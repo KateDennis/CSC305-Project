@@ -16,10 +16,18 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
-public class CalenderGenerator extends Application {
-	@Override
-	public void start(Stage primaryStage)
-    {
+public class CalenderGenerator {
+	
+	
+	private Stage primaryStage;
+	private SubmitHandler submittedCourseList;
+
+	public CalenderGenerator(Stage primaryStage, SubmitHandler submittedCourseList) {
+		this.primaryStage = primaryStage;
+		this.submittedCourseList = submittedCourseList;
+	}
+	
+	public void makeGrid() {
 		Group root = new Group();
 		Scene scene = new Scene(root, 851, 826);
 		Stage stage = new Stage();
@@ -194,29 +202,13 @@ public class CalenderGenerator extends Application {
 		imageView.setX(0);
 		imageView.setY(0);
 		root.getChildren().add(imageView);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		
 		primaryStage.setScene(scene);
-		primaryStage.show();
     }
 	
-	public static void main(String[] args) {
-		launch(args);
+	public void showStage() {
+		primaryStage.show();
 	}
+
 }

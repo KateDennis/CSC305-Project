@@ -45,13 +45,15 @@ public class UserScheduleInput extends Application{
 				//Storing data from class schedule
 				String scheduleText = userTextField.getText();
 				String[] classSchedule = scheduleText.split("\n");
-				SubmitHandler submitted = new SubmitHandler(classSchedule);
+				SubmitHandler submittedCourseList = new SubmitHandler(classSchedule);
 				
-				CalenderGenerator();
+				CalenderGenerator generatedCalender = new CalenderGenerator(primaryStage, submittedCourseList);
+				generatedCalender.makeGrid();
+				generatedCalender.showStage();
 				
 				
 				//FOR TESTING PURPOSES ONLY
-				System.out.println(submitted.toString());
+				System.out.println(submittedCourseList.toString());
 				
 			});
 			
