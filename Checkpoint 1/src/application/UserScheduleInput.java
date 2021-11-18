@@ -38,7 +38,7 @@ public class UserScheduleInput extends Application{
 			//Creates submit button 
 			Button submit = new Button("Submit");
 			gridPaneMain.add(submit, 2, 2);
-			
+			 
 			//Submit Button
 			submit.setOnAction(value -> {
 				

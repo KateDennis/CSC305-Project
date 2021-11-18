@@ -127,7 +127,7 @@ public class SubmitHandler {
 		list.add("LTAM");
 		list.add("MATH");
 		list.add("MJMC");
-		list.add("MUCH");
+		list.add("MUCH"); 
 		list.add("MUEN");
 		list.add("MULS");
 		list.add("MUSC");

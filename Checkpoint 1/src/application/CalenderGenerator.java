@@ -45,7 +45,7 @@ public class CalenderGenerator {
 		for (Course course : courseList) {
 			String classCode = course.getClassCode();
 			String name = course.getName();
-			String professor = course.getProfessor();
+			String professor = course.getProfessor(); 
 			String building = course.getBuilding();
 			String room = course.getRoomNumber();
 			double startTime = course.getStartCode();

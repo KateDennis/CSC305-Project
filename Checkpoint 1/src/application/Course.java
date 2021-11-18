@@ -77,7 +77,7 @@ public class Course {
 				|| endTime.substring(0, 2).contains("12")) {
 			endInt = Integer.parseInt(endTime.substring(0, 2));
 			endDouble = Double.parseDouble(endTime.substring(3, 5));
-		} else {
+		} else {  
 			endInt = Integer.parseInt(endTime.substring(0, 1));
 			endDouble = Double.parseDouble(endTime.substring(2, 4));
 		}
@@ -85,7 +85,7 @@ public class Course {
 		//endDouble = endDouble / 100;
 		
 		endCode = endInt + endDouble;
-		if (endTime.contains("pm")) {
+		if (endTime.contains("pm")) { 
 			endCode = endCode + 12;
 		}
 		return endCode;
