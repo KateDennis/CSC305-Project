@@ -117,7 +117,7 @@ public class SubmitHandler {
 		list.add("HEPE");
 		list.add("HIST");
 		list.add("HONR");
-		list.add("ISS-");
+		list.add("ISS-"); 
 		list.add("JPN-");
 		list.add("JPST");
 		list.add("KINS");
@@ -127,7 +127,7 @@ public class SubmitHandler {
 		list.add("LTAM");
 		list.add("MATH");
 		list.add("MJMC");
-		list.add("MUCH");
+		list.add("MUCH"); 
 		list.add("MUEN");
 		list.add("MULS");
 		list.add("MUSC");

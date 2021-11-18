@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class CalenderGenerator {
 
 	private Stage primaryStage;
-	private SubmitHandler submittedCourseList;
+	private SubmitHandler submittedCourseList; 
 
 	/**
 	 * Creates a CalenderGenerator object and allows client code to call methods to
@@ -43,17 +43,16 @@ public class CalenderGenerator {
 	public void parseSubmittedCourseList() {
 		ArrayList<Course> courseList = new ArrayList<Course>();
 		courseList = submittedCourseList.getCourseList();
-		for (int i = 0; i < courseList.size() - 7; i++) {
-			Course code = courseList.get(i);
-			Course name = courseList.get(i + 1);
-			Course professor = courseList.get(i + 2);
-			Course building = courseList.get(i + 3);
-			Course room = courseList.get(i + 4);
-			Course days = courseList.get(i + 5);
-			Course startTime = courseList.get(i + 6);
-			Course endTime = courseList.get(i + 7);
-			
-			 
+		
+		for (Course course : courseList) {
+			String classCode = course.getClassCode();
+			String name = course.getName();
+			String professor = course.getProfessor(); 
+			String building = course.getBuilding();
+			String room = course.getRoomNumber();
+			double startTime = course.getStartCode();
+			double endTime = course.getEndCode();
+			buildRectangle(root, startTime, endTime);
 			
 		}
 

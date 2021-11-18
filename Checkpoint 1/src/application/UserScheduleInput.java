@@ -5,7 +5,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.*; 
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font; 
 
@@ -38,7 +38,7 @@ public class UserScheduleInput extends Application{
 			//Creates submit button 
 			Button submit = new Button("Submit");
 			gridPaneMain.add(submit, 2, 2);
-			
+			 
 			//Submit Button
 			submit.setOnAction(value -> {
 				
@@ -46,6 +46,30 @@ public class UserScheduleInput extends Application{
 				String scheduleText = userTextField.getText();
 				String[] classSchedule = scheduleText.split("\n");
 				SubmitHandler submittedCourseList = new SubmitHandler(classSchedule);
+				
+				/*
+				ConflictChecker checkingConflicts = new ConflictChecker(submittedCourseList.getCourseList());
+				if (checkingConflicts.getHasConflicts()) {
+					Stage conflictStage = new Stage();
+					GridPane gridPaneConflicts = new GridPane();
+					gridPaneConflicts.setAlignment(Pos.CENTER);
+					Scene sceneConflicts = new Scene(gridPaneConflicts, 900, 300);
+					conflictStage.setTitle("Conflicts");
+					gridPaneConflicts.setPadding(new Insets(10));
+					gridPaneConflicts.setHgap(15);
+					gridPaneConflicts.setVgap(15);
+					
+					int count = 0;
+					for (String conflict : checkingConflicts.getConflictList()) {
+						gridPaneConflicts.add(new Label(conflict), 0, count);
+						count++;
+						
+					sceneConflicts.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+					conflictStage.setScene(sceneConflicts);
+					conflictStage.show();
+					}
+				}
+				*/
 				
 				CalenderGenerator generatedCalender = new CalenderGenerator(primaryStage, submittedCourseList);
 				generatedCalender.makeGrid();
