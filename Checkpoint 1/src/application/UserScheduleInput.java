@@ -47,7 +47,7 @@ public class UserScheduleInput extends Application{
 				String[] classSchedule = scheduleText.split("\n");
 				SubmitHandler submitted = new SubmitHandler(classSchedule);
 				
-				View calenderView = new View(primaryStage, submitted);
+				CalenderGenerator();
 				
 				
 				//FOR TESTING PURPOSES ONLY
