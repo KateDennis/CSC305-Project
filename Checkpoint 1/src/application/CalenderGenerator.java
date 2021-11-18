@@ -53,15 +53,16 @@ public class CalenderGenerator {
 			Course startTime = courseList.get(i + 6);
 			Course endTime = courseList.get(i + 7);
 			
-			
+			 
 			
 		}
 
 	}
 	
 	public Group buildRectangle(Group root, int x, int y) {
-		Rectangle rectangle = new Rectangle();
+		java.awt.Rectangle rectangle = new Rectangle();
 		rectangle.setX(x);
+		
 		rectangle.setY(y);
 		rectangle.setWidth(x);
 		rectangle.setHeight(y);
