@@ -5,7 +5,7 @@ import java.util.*;
 public class ConflictChecker {
 	
 	private boolean hasConflicts = false;
-	private ArrayList<String> conflictList = new ArrayList<String>();
+	private ArrayList<String> conflictList = new ArrayList<String>(); 
 	
 	public ConflictChecker(ArrayList<Course> courseList) {
 		int courseIndex = 0;

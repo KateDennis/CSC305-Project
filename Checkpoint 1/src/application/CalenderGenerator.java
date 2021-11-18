@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class CalenderGenerator {
 
 	private Stage primaryStage;
-	private SubmitHandler submittedCourseList;
+	private SubmitHandler submittedCourseList; 
 
 	/**
 	 * Creates a CalenderGenerator object and allows client code to call methods to

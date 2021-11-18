@@ -70,7 +70,7 @@ public class Course {
 	 * @param endTime - the time the class ends
 	 * @return the time the class ends in the form of a double
 	 */
-	private double createEndCode(String endTime) {
+	private double createEndCode(String endTime) { 
 		int endInt = 0;
 		double endDouble = 0;
 		if (endTime.substring(0, 2).contains("10") || endTime.substring(0, 2).contains("11")
