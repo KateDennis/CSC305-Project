@@ -55,7 +55,8 @@ public class Course {
 			startInt = Integer.parseInt(startTime.substring(0, 1));
 			startDouble = Double.parseDouble(startTime.substring(2, 4));
 		}
-		startDouble = startDouble / 100;
+		startDouble = startDouble / 60;
+		//startDouble = startDouble / 100;
 		startCode = startInt + startDouble;
 		if (startTime.contains("pm")) {
 			startCode = startCode + 12;
@@ -80,7 +81,9 @@ public class Course {
 			endInt = Integer.parseInt(endTime.substring(0, 1));
 			endDouble = Double.parseDouble(endTime.substring(2, 4));
 		}
-		endDouble = endDouble / 100;
+		endDouble = endDouble / 60;
+		//endDouble = endDouble / 100;
+		
 		endCode = endInt + endDouble;
 		if (endTime.contains("pm")) {
 			endCode = endCode + 12;
@@ -96,7 +99,38 @@ public class Course {
 	public String getName() {
 		return className;
 	}
+	/**
+	 * Gives the class code
+	 * @return the class code
+	 */
+	public String getClassCode() {
+		return classCode;
+	}
 
+	/**
+	 * Gives the name of the professor teaching the class
+	 * @return the professor's name
+	 */
+	public String getProfessor() {
+		return professor;
+	}
+	
+	/**
+	 * Gives the building where the class is held
+	 * @return the building name
+	 */
+	public String getBuilding() {
+		return building;
+	}
+	
+	/**
+	 * Gives the room number where the course is taught
+	 * @return the room number
+	 */
+	public String getRoomNumber() {
+		return room;
+	}
+	
 	/**
 	 * Gives the course days
 	 * 
@@ -112,6 +146,7 @@ public class Course {
 	 * @return the course start code
 	 */
 	public double getStartCode() {
+	
 		return startCode;
 	}
 
@@ -266,5 +301,6 @@ public class Course {
 	public String toString() {
 		return classCode + ", " + className + ", " + building + ", " + room + ", " + professor + ", " + startTime + ", "
 				+ endTime + ", " + days;
+		
 	}
 }
