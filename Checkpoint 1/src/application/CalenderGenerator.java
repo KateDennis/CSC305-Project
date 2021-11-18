@@ -1,5 +1,7 @@
 package application;
 	
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -25,6 +27,22 @@ public class CalenderGenerator {
 	public CalenderGenerator(Stage primaryStage, SubmitHandler submittedCourseList) {
 		this.primaryStage = primaryStage;
 		this.submittedCourseList = submittedCourseList;
+	}
+	
+	public void parseSubmittedCourseList() {
+		ArrayList<Course> courseList = new ArrayList<Course>();
+		courseList = submittedCourseList.getCourseList();
+		for (int i = 0; i < courseList.size() - 7; i++) {
+			Course code = courseList.get(i); 
+			Course name = courseList.get(i + 1);
+			Course professor = courseList.get(i + 2);
+			Course building = courseList.get(i + 3);
+			Course room = courseList.get(i + 4);
+			Course days = courseList.get(i + 5);
+			Course startTime = courseList.get(i + 6); 
+			Course endTime = courseList.get(i + 7); 
+		}
+		
 	}
 	
 	public void makeGrid() {
