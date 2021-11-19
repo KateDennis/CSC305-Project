@@ -22,6 +22,15 @@ public class CalenderGenerator {
 
 	private Stage primaryStage;
 	private SubmitHandler submittedCourseList; 
+	private int timeDifferenceInitializer = 7;
+	private int yDistanceBetweenHours = 75;
+	private int yCoordinateTimeInitializer = 25;
+	private int mondayXCord = 100;
+	private int tuesdayXCord = 250;
+	private int wednesdayXCord = 400;
+	private int thursdayXCord = 550;
+	private int fridayXCord = 700;
+	private int distBtwnDays = 150;
 
 	/**
 	 * Creates a CalenderGenerator object and allows client code to call methods to
@@ -37,10 +46,31 @@ public class CalenderGenerator {
 	}
 
 	/**
+	 * Creates a grid with Monday-Friday and includes hourly times from 8am to 5pm.
+	 */
+	public void makeGrid() {
+		Group root = new Group();
+		Scene scene = new Scene(root, 851, 826);
+
+		this.addDaysToGroup(root);
+		this.addTimesToGroup(root);
+		this.addLinesToGroup(root);
+		this.addAugieImageToGroup(root);
+		courseListToRectangle(root);
+		
+		
+		
+		primaryStage.setScene(scene);
+	}
+
+	public void showStage() {
+		primaryStage.show();
+	}
+	/**
 	 * Parses the input of the submittedCourseList and extracts the attributes of
 	 * each class in the list.
 	 */
-	public void parseSubmittedCourseList() {
+	public void courseListToRectangle(Group root) {
 		ArrayList<Course> courseList = new ArrayList<Course>();
 		courseList = submittedCourseList.getCourseList();
 		
@@ -50,27 +80,62 @@ public class CalenderGenerator {
 			String professor = course.getProfessor(); 
 			String building = course.getBuilding();
 			String room = course.getRoomNumber();
-			double startTime = course.getStartCode();
-			double endTime = course.getEndCode();
-			buildRectangle(root, startTime, endTime);
+			String days = course.getDays();
+			double startTimeHour = course.getHourStartCode();
+			double startTimeMinute = course.getMinuteStartCode();
+			double endTimeHour = course.getHourEndCode();
+			System.out.println("End time hour: " + endTimeHour);
+			double endTimeMinute = course.getMinuteEndCode();
+			
+			
+			double startTime = Math.abs(startTimeHour - timeDifferenceInitializer) * yDistanceBetweenHours + yCoordinateTimeInitializer + startTimeMinute; 
+			double endTime = Math.abs(endTimeHour - timeDifferenceInitializer) * yDistanceBetweenHours + yCoordinateTimeInitializer + endTimeMinute;
+			System.out.println("Start time: " + startTime);
+			System.out.println("End time: " + endTime);
+			System.out.println();
+			plotRectaglesForClasses(root, startTime, endTime, days);
+			
 			
 		}
 
 	}
-	
-	public Group buildRectangle(Group root, int x, int y) {
-		java.awt.Rectangle rectangle = new Rectangle();
-		rectangle.setX(x);
+	/**
+	 * Creates Rectangle for each class on grid
+	 * @param root - Group where all the rectangles are added
+	 * @param startTime - Time of when class begins as a double
+	 * @param endTime - Time when class ends as a double
+	 * @return - root
+	 */
+	public void buildRectangle(Group root, double startTime, double endTime, double xCordOfDay) {
+		Rectangle rectangle = new Rectangle();
+		rectangle.setX(xCordOfDay);
 		
-		rectangle.setY(y);
-		rectangle.setWidth(x);
-		rectangle.setHeight(y);
+		rectangle.setY(startTime);
+		rectangle.setWidth(distBtwnDays);
+		rectangle.setHeight(endTime - startTime);
 		root.getChildren().add(rectangle);
 		rectangle.setFill(Color.BLUE);
+	}
+	
+	public void plotRectaglesForClasses(Group root, double startTime, double endTime, String days) {
 		
+		if (days.contains("M")) {
+			buildRectangle(root, startTime, endTime, mondayXCord);
+		} if (days.contains("Tu")) {
+			buildRectangle(root, startTime, endTime, tuesdayXCord);
+		} if (days.contains("W")) {
+			buildRectangle(root, startTime, endTime, wednesdayXCord);
+		} if (days.contains("Th")) {
+			buildRectangle(root, startTime, endTime, thursdayXCord);
+		} if (days.contains("F")) {
+			buildRectangle(root, startTime, endTime, fridayXCord);
+		}
+			
 		
 	}
-	public Group titleOfClass(Group root, int y) {
+	
+	//TODO
+	public void titleOfClass(Group root, int y) {
 		Text classname = new Text();
 		classname.setY(y);
 		root.getChildren().add(classname);
@@ -199,35 +264,35 @@ public class CalenderGenerator {
 	 */
 	public Group addLinesToGroup(Group root) {
 		Line line1 = new Line();
-		line1.setStartX(100);
+		line1.setStartX(mondayXCord);
 		line1.setStartY(0);
 		line1.setEndX(100);
 		line1.setEndY(875);
 		root.getChildren().add(line1);
 
 		Line line2 = new Line();
-		line2.setStartX(250);
+		line2.setStartX(tuesdayXCord);
 		line2.setStartY(0);
 		line2.setEndX(250);
 		line2.setEndY(875);
 		root.getChildren().add(line2);
 
 		Line line3 = new Line();
-		line3.setStartX(400);
+		line3.setStartX(wednesdayXCord);
 		line3.setStartY(0);
 		line3.setEndX(400);
 		line3.setEndY(875);
 		root.getChildren().add(line3);
 
 		Line line4 = new Line();
-		line4.setStartX(550);
+		line4.setStartX(thursdayXCord);
 		line4.setStartY(0);
 		line4.setEndX(550);
 		line4.setEndY(875);
 		root.getChildren().add(line4);
 
 		Line line5 = new Line();
-		line5.setStartX(700);
+		line5.setStartX(fridayXCord);
 		line5.setStartY(0);
 		line5.setEndX(700);
 		line5.setEndY(875);
@@ -336,26 +401,5 @@ public class CalenderGenerator {
 		return root;
 	}
 
-	/**
-	 * Creates a grid with Monday-Friday and includes hourly times from 8am to 5pm.
-	 */
-	public void makeGrid() {
-		Group root = new Group();
-		Scene scene = new Scene(root, 851, 826);
-		Stage stage = new Stage();
-
-		this.addDaysToGroup(root);
-		this.addTimesToGroup(root);
-		this.addLinesToGroup(root);
-		this.addAugieImageToGroup(root);
-		this.buildRectangle(root, x, y);
-		this.titleOfClass(root, y);
-
-		primaryStage.setScene(scene);
-	}
-
-	public void showStage() {
-		primaryStage.show();
-	}
 
 }

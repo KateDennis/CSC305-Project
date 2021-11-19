@@ -11,6 +11,10 @@ public class Course {
 	private String room = new String();
 	private double startCode = 0;
 	private double endCode = 0;
+	private double hourStartCode = 0;
+	private double minuteStartCode = 0;
+	private double hourEndCode = 0;
+	private double minuteEndCode = 0;
 
 	/**
 	 * Creates a course object
@@ -57,10 +61,16 @@ public class Course {
 		}
 		startDouble = startDouble / 60;
 		//startDouble = startDouble / 100;
+
 		startCode = startInt + startDouble;
-		if (startTime.contains("pm")) {
+		if (startTime.contains("PM") && startInt != 12) {
 			startCode = startCode + 12;
+			startInt = startInt + 12;
 		}
+
+		hourStartCode = startInt;
+		minuteStartCode = startDouble;
+		System.out.println("Unaltered Start Time: " + startCode);
 		return startCode;
 	}
 
@@ -84,10 +94,17 @@ public class Course {
 		endDouble = endDouble / 60;
 		//endDouble = endDouble / 100;
 		
+		;
 		endCode = endInt + endDouble;
-		if (endTime.contains("pm")) { 
+		if (endTime.contains("PM") && endInt != 12) { 
 			endCode = endCode + 12;
+			endInt = endInt + 12;
 		}
+		
+		hourEndCode = endInt;
+		minuteEndCode = endDouble;
+		System.out.println("Unaltered End Time: " + endCode);
+		System.out.println();
 		return endCode;
 	}
 
@@ -158,7 +175,40 @@ public class Course {
 	public double getEndCode() {
 		return endCode;
 	}
-
+	
+	/**
+	 * Gives the hour of the start of class 
+	 * @return hour of the start of class
+	 */
+	public double getHourStartCode() {
+		return hourStartCode;
+	}
+	
+	/**
+	 * Gives the minutes of the start of class in base 100
+	 * @return minutes of the start of class
+	 */
+	public double getMinuteStartCode() {
+		return minuteStartCode;
+	}
+	
+	/**
+	 * Gives the hour of the end of class
+	 * @return hour of end of class
+	 */
+	public double getHourEndCode() {
+		return hourEndCode;
+	}
+	
+	/**
+	 * Gives the minutes of the end of class in base 100
+	 * @return minutes of the end of class
+	 */
+	public double getMinuteEndCode() {
+		return minuteEndCode;
+	}
+	
+	
 	@Override
 	public boolean equals(Object object) {
 		if (object == this) {
