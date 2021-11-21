@@ -27,6 +27,7 @@ public class SubmitHandler {
 
 		// Going through the schedule to parse out required data
 		for (String line : schedule) {
+			
 			// Checking for Course code in order to get course code and name
 			if (line.length() >= 5 && courseCodeList.contains(line.substring(0, 4))) {
 				code = line;
@@ -53,6 +54,8 @@ public class SubmitHandler {
 						|| !(courseList.get(courseList.size() - 1).getDays().equals(days))) {
 					courseList.add(new Course(code, name, professor, building, room, startTime, endTime, days));
 				}
+
+				
 			}
 			i++;
 		}

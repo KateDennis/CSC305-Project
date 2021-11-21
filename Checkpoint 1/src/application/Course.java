@@ -70,7 +70,6 @@ public class Course {
 
 		hourStartCode = startInt;
 		minuteStartCode = startDouble;
-		System.out.println("Unaltered Start Time: " + startCode);
 		return startCode;
 	}
 
@@ -103,8 +102,6 @@ public class Course {
 		
 		hourEndCode = endInt;
 		minuteEndCode = endDouble;
-		System.out.println("Unaltered End Time: " + endCode);
-		System.out.println();
 		return endCode;
 	}
 
