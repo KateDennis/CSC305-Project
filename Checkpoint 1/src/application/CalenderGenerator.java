@@ -1,19 +1,12 @@
 package application;
 
 import java.util.ArrayList;
-
-
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -21,16 +14,18 @@ import javafx.stage.Stage;
 public class CalenderGenerator {
 
 	private Stage primaryStage;
-	private SubmitHandler submittedCourseList; 
+	private SubmitHandler submittedCourseList;
 	private int timeDifferenceInitializer = 7;
 	private int yDistanceBetweenHours = 75;
-	private int yCoordinateTimeInitializer = 25;
 	private int mondayXCord = 100;
 	private int tuesdayXCord = 250;
 	private int wednesdayXCord = 400;
 	private int thursdayXCord = 550;
 	private int fridayXCord = 700;
 	private int distBtwnDays = 150;
+	private int distBtwnCourseAttributes = 20;
+	private int courseAttributesYInitializer = 25;
+	private int courseAttributesXInitializer = 15;
 
 	/**
 	 * Creates a CalenderGenerator object and allows client code to call methods to
@@ -57,15 +52,14 @@ public class CalenderGenerator {
 		this.addLinesToGroup(root);
 		this.addAugieImageToGroup(root);
 		courseListToRectangle(root);
-		
-		
-		
+
 		primaryStage.setScene(scene);
 	}
 
 	public void showStage() {
 		primaryStage.show();
 	}
+
 	/**
 	 * Parses the input of the submittedCourseList and extracts the attributes of
 	 * each class in the list.
@@ -73,77 +67,127 @@ public class CalenderGenerator {
 	public void courseListToRectangle(Group root) {
 		ArrayList<Course> courseList = new ArrayList<Course>();
 		courseList = submittedCourseList.getCourseList();
-		
+
 		for (Course course : courseList) {
 			String classCode = course.getClassCode();
-			String name = course.getName();
-			String professor = course.getProfessor(); 
+			String courseName = course.getName();
+			String professor = course.getProfessor();
 			String building = course.getBuilding();
 			String room = course.getRoomNumber();
 			String days = course.getDays();
-			double startTimeHour = course.getHourStartCode();
-			double startTimeMinute = course.getMinuteStartCode();
-			double endTimeHour = course.getHourEndCode();
-			System.out.println("End time hour: " + endTimeHour);
-			double endTimeMinute = course.getMinuteEndCode();
-			
-			
-			double startTime = Math.abs(startTimeHour - timeDifferenceInitializer) * yDistanceBetweenHours + yCoordinateTimeInitializer + startTimeMinute; 
-			double endTime = Math.abs(endTimeHour - timeDifferenceInitializer) * yDistanceBetweenHours + yCoordinateTimeInitializer + endTimeMinute;
-			System.out.println("Start time: " + startTime);
-			System.out.println("End time: " + endTime);
-			System.out.println();
-			plotRectaglesForClasses(root, startTime, endTime, days);
-			
-			
+
+			double startTime = course.getStartCode();
+			double endTime = course.getEndCode();
+
+			startTime = (startTime - timeDifferenceInitializer) * yDistanceBetweenHours;
+			endTime = (endTime - timeDifferenceInitializer) * yDistanceBetweenHours;
+
+			plotRectaglesForClasses(root, startTime, endTime, days, classCode, courseName, professor, building, room);
+
 		}
 
 	}
+
 	/**
 	 * Creates Rectangle for each class on grid
-	 * @param root - Group where all the rectangles are added
+	 * 
+	 * @param root      - Group where all the rectangles are added
 	 * @param startTime - Time of when class begins as a double
-	 * @param endTime - Time when class ends as a double
+	 * @param endTime   - Time when class ends as a double
 	 * @return - root
 	 */
 	public void buildRectangle(Group root, double startTime, double endTime, double xCordOfDay) {
 		Rectangle rectangle = new Rectangle();
 		rectangle.setX(xCordOfDay);
-		
+
 		rectangle.setY(startTime);
 		rectangle.setWidth(distBtwnDays);
 		rectangle.setHeight(endTime - startTime);
 		root.getChildren().add(rectangle);
 		rectangle.setFill(Color.BLUE);
 	}
-	
-	public void plotRectaglesForClasses(Group root, double startTime, double endTime, String days) {
-		
+
+	/**
+	 * Plots the rectangles for the different repetitions of courses between Monday
+	 * and Friday
+	 * 
+	 * @param root      - Group where rectangle objects are added
+	 * @param startTime - Start time of the course
+	 * @param endTime   - End time of the course
+	 * @param days      - Days which class is held
+	 */
+	public void plotRectaglesForClasses(Group root, double startTime, double endTime, String days, String courseCode,
+			String courseName, String professor, String building, String room) {
+
 		if (days.contains("M")) {
 			buildRectangle(root, startTime, endTime, mondayXCord);
-		} if (days.contains("Tu")) {
-			buildRectangle(root, startTime, endTime, tuesdayXCord);
-		} if (days.contains("W")) {
-			buildRectangle(root, startTime, endTime, wednesdayXCord);
-		} if (days.contains("Th")) {
-			buildRectangle(root, startTime, endTime, thursdayXCord);
-		} if (days.contains("F")) {
-			buildRectangle(root, startTime, endTime, fridayXCord);
+			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, mondayXCord);
 		}
-			
-		
+		if (days.contains("Tu")) {
+			buildRectangle(root, startTime, endTime, tuesdayXCord);
+			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, tuesdayXCord);
+		}
+		if (days.contains("W")) {
+			buildRectangle(root, startTime, endTime, wednesdayXCord);
+			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, wednesdayXCord);
+		}
+		if (days.contains("Th")) {
+			buildRectangle(root, startTime, endTime, thursdayXCord);
+			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, thursdayXCord);
+		}
+		if (days.contains("F")) {
+			buildRectangle(root, startTime, endTime, fridayXCord);
+			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, fridayXCord);
+		}
+
 	}
-	
-	//TODO
-	public void titleOfClass(Group root, int y) {
-		Text classname = new Text();
-		classname.setY(y);
-		root.getChildren().add(classname);
-		
+
+	/**
+	 * Plots all the class attributes onto the rectangle the corresponds with the
+	 * course
+	 * 
+	 * @param root       - Group where rectangle objects are added
+	 * @param courseCode - the code of the course
+	 * @param courseName - name of the course
+	 * @param professor  - name of the professor teaching course
+	 * @param building   - building where the class is taught
+	 * @param room       - room in building where class is taught
+	 * @param startTime  - time when class starts
+	 * @param xCordOfDay - x coordinate of when class occurs
+	 */
+	public void plotClassAttributes(Group root, String courseCode, String courseName, String professor, String building,
+			String room, double startTime, double xCordOfDay) {
+		startTime = startTime + courseAttributesYInitializer;
+		xCordOfDay = xCordOfDay + courseAttributesXInitializer;
+		Text courseCodeText = new Text(courseCode);
+		Text classNameText = new Text(courseName);
+		Text professorText = new Text(professor);
+		Text buildingAndRoomText = new Text(building + ": " + room);
+
+		courseCodeText.setFill(Color.WHITE);
+		classNameText.setFill(Color.WHITE);
+		professorText.setFill(Color.WHITE);
+		buildingAndRoomText.setFill(Color.WHITE);
+
+		courseCodeText.setX(xCordOfDay);
+		courseCodeText.setY(startTime);
+		classNameText.setX(xCordOfDay);
+		classNameText.setY(startTime + distBtwnCourseAttributes);
+		professorText.setX(xCordOfDay);
+		professorText.setY(startTime + 2 * distBtwnCourseAttributes);
+		buildingAndRoomText.setX(xCordOfDay);
+		buildingAndRoomText.setY(startTime + 3 * distBtwnCourseAttributes);
+
+		root.getChildren().add(courseCodeText);
+		root.getChildren().add(classNameText);
+		root.getChildren().add(professorText);
+		root.getChildren().add(buildingAndRoomText);
+
 	}
 
 	/**
 	 * Adds all the days, Monday-Friday, to the root
+	 * 
 	 * @param root - Group where all the data for week day and times are held
 	 * @return - Group root
 	 */
@@ -180,9 +224,10 @@ public class CalenderGenerator {
 
 		return root;
 	}
-	
+
 	/**
 	 * Adds all the times starting at 8am to 6pm hourly to the Group root
+	 * 
 	 * @param root - Group where all the data for week day and times are held
 	 * @return - Group root
 	 */
@@ -252,13 +297,14 @@ public class CalenderGenerator {
 		time11.setX(50);
 		time11.setY(850);
 		root.getChildren().add(time11);
-		
+
 		return root;
 	}
-	
+
 	/**
 	 * 
 	 * Adds all the lines creating a grid to the Group root
+	 * 
 	 * @param root - Group where all the data for week day and times are held
 	 * @return - Group root
 	 */
@@ -304,7 +350,6 @@ public class CalenderGenerator {
 		lastline.setEndX(850);
 		lastline.setEndY(875);
 		root.getChildren().add(lastline);
-
 
 		Line line6 = new Line();
 		line6.setStartX(0);
@@ -382,12 +427,13 @@ public class CalenderGenerator {
 		line16.setEndX(1000);
 		line16.setEndY(825);
 		root.getChildren().add(line16);
-		
+
 		return root;
 	}
-	
+
 	/**
 	 * Adds Augustana College logo to upper left part corner of schedule
+	 * 
 	 * @param root - Group where all the data for week day and times are held
 	 * @return - Group root
 	 */
@@ -397,9 +443,8 @@ public class CalenderGenerator {
 		imageView.setX(0);
 		imageView.setY(0);
 		root.getChildren().add(imageView);
-		
+
 		return root;
 	}
-
 
 }
