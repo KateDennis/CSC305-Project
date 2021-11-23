@@ -23,7 +23,7 @@ public class CalenderGenerator {
 	private int thursdayXCord = 550;
 	private int fridayXCord = 700;
 	private int distBtwnDays = 150;
-	private int distBtwnCourseAttributes = 20;
+	private int distBtwnCourseAttributes = 15;
 	private int courseAttributesYInitializer = 25;
 	private int courseAttributesXInitializer = 15;
 
