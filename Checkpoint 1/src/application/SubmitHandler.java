@@ -56,7 +56,6 @@ public class SubmitHandler {
 						startTime = times[0];
 						endTime = times[2];
 					}
-
 				}
 			
 			// Checking for building list in order to get building, room, and professor

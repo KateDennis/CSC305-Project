@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 public class CalenderGenerator {
 
+	
 	private Stage primaryStage;
 	private SubmitHandler submittedCourseList;
 	private int timeDifferenceInitializer = 7;
