@@ -42,22 +42,23 @@ public class SubmitHandler {
 				String[] times = schedule[i].split(" ");
 				startTime = times[0];
 				endTime = times[2];
+				// Checking for a second weekday category and then adding course to course list
 				if (schedule[i + 1].contains("M ") && !(schedule[i + 1].contains("-"))
 						|| schedule[i + 1].contains("Tu ") || schedule[i + 1].contains("W ")
 						|| schedule[i + 1].contains("Th ") || schedule[i + 1].contains("F ")) {
-						building = schedule[i + 3];
-						room = schedule[i + 4];
-						professor = schedule[i + 5];
-						String[] professorList = professor.split(",");
-						professor = professorList[1] + " " + professorList[0];
-						courseList.add(new Course(code, name, professor, building, room, startTime, endTime, days));
-						days = schedule[i + 1];
-						times = schedule[i + 2].split(" ");
-						startTime = times[0];
-						endTime = times[2];
-					}
+					building = schedule[i + 3];
+					room = schedule[i + 4];
+					professor = schedule[i + 5];
+					String[] professorList = professor.split(",");
+					professor = professorList[1] + " " + professorList[0];
+					courseList.add(new Course(code, name, professor, building, room, startTime, endTime, days));
+					days = schedule[i + 1];
+					times = schedule[i + 2].split(" ");
+					startTime = times[0];
+					endTime = times[2];
 				}
-			
+			}
+
 			// Checking for building list in order to get building, room, and professor
 			// Adds course to course List
 			if (buildingList.contains(line) && !(code.contains("MULS"))) {
