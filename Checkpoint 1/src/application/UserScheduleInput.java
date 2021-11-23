@@ -47,7 +47,6 @@ public class UserScheduleInput extends Application{
 				String[] classSchedule = scheduleText.split("\n");
 				SubmitHandler submittedCourseList = new SubmitHandler(classSchedule);
 				
-				/*
 				ConflictChecker checkingConflicts = new ConflictChecker(submittedCourseList.getCourseList());
 				if (checkingConflicts.getHasConflicts()) {
 					Stage conflictStage = new Stage();
@@ -68,12 +67,12 @@ public class UserScheduleInput extends Application{
 					conflictStage.setScene(sceneConflicts);
 					conflictStage.show();
 					}
-				}
-				*/
+				} else {
 				
-				CalenderGenerator generatedCalender = new CalenderGenerator(primaryStage, submittedCourseList);
-				generatedCalender.makeGrid();
-				generatedCalender.showStage();
+					CalenderGenerator generatedCalender = new CalenderGenerator(primaryStage, submittedCourseList);
+					generatedCalender.makeGrid();
+					generatedCalender.showStage();
+				}
 				
 				
 				//FOR TESTING PURPOSES ONLY

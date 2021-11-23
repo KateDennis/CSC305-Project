@@ -8,17 +8,16 @@ public class ConflictChecker {
 	private ArrayList<String> conflictList = new ArrayList<String>(); 
 	
 	public ConflictChecker(ArrayList<Course> courseList) {
-		int courseIndex = 0;
-		for(Course course : courseList) {
+		for(int courseIndex = 0; courseIndex < courseList.size(); courseIndex++) {
+			Course course = courseList.get(courseIndex);
 			for(int i = courseIndex + 1; i < courseList.size(); i++) {
 				if(course.equals(courseList.get(i))) {
 					courseList.remove(i);
 				} else if (course.compareTo(courseList.get(i)) > 0) {
-					conflictList.add("Course " + course.getName() + " and Course " + courseList.get(i) + " have conflicting times");
+					conflictList.add("Course " + course.getName() + " and Course " + courseList.get(i).getName() + " have conflicting times");
 					hasConflicts = true;
 				}
 			}
-			courseIndex++;
 		}
 	}
 	
