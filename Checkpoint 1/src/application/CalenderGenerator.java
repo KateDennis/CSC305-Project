@@ -1,6 +1,6 @@
 package application;
 
-import java.util.ArrayList;
+import java.util.*;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -67,7 +67,15 @@ public class CalenderGenerator {
 	 */
 	public void courseListToRectangle(Group root) {
 		ArrayList<Course> courseList = new ArrayList<Course>();
+		
+		ArrayList<Color> colorList = new ArrayList<Color>();
 		courseList = submittedCourseList.getCourseList();
+		colorList.add(Color.BLUE);
+		colorList.add(Color.RED);
+		colorList.add(Color.GREEN);
+		colorList.add(Color.PURPLE);
+
+		
 
 		for (Course course : courseList) {
 			String classCode = course.getClassCode();
@@ -82,8 +90,12 @@ public class CalenderGenerator {
 
 			startTime = (startTime - timeDifferenceInitializer) * yDistanceBetweenHours;
 			endTime = (endTime - timeDifferenceInitializer) * yDistanceBetweenHours;
-
-			plotRectaglesForClasses(root, startTime, endTime, days, classCode, courseName, professor, building, room);
+			
+			Random randInt = new Random();
+			int randomColorIndex = randInt.nextInt(4);
+			Color rectangleColor = colorList.get(randomColorIndex);
+			
+			plotRectaglesForClasses(root, startTime, endTime, days, classCode, courseName, professor, building, room, rectangleColor);
 
 		}
 
@@ -97,15 +109,19 @@ public class CalenderGenerator {
 	 * @param endTime   - Time when class ends as a double
 	 * @return - root
 	 */
-	public void buildRectangle(Group root, double startTime, double endTime, double xCordOfDay) {
+	public void buildRectangle(Group root, double startTime, double endTime, double xCordOfDay, Color color) {
 		Rectangle rectangle = new Rectangle();
 		rectangle.setX(xCordOfDay);
+		
 
 		rectangle.setY(startTime);
 		rectangle.setWidth(distBtwnDays);
 		rectangle.setHeight(endTime - startTime);
 		root.getChildren().add(rectangle);
-		rectangle.setFill(Color.BLUE);
+		
+		rectangle.setFill(color);
+		
+		
 	}
 
 	/**
@@ -118,26 +134,26 @@ public class CalenderGenerator {
 	 * @param days      - Days which class is held
 	 */
 	public void plotRectaglesForClasses(Group root, double startTime, double endTime, String days, String courseCode,
-			String courseName, String professor, String building, String room) {
+			String courseName, String professor, String building, String room, Color rectangleColor) {
 
 		if (days.contains("M")) {
-			buildRectangle(root, startTime, endTime, mondayXCord);
+			buildRectangle(root, startTime, endTime, mondayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, mondayXCord);
 		}
 		if (days.contains("Tu")) {
-			buildRectangle(root, startTime, endTime, tuesdayXCord);
+			buildRectangle(root, startTime, endTime, tuesdayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, tuesdayXCord);
 		}
 		if (days.contains("W")) {
-			buildRectangle(root, startTime, endTime, wednesdayXCord);
+			buildRectangle(root, startTime, endTime, wednesdayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, wednesdayXCord);
 		}
 		if (days.contains("Th")) {
-			buildRectangle(root, startTime, endTime, thursdayXCord);
+			buildRectangle(root, startTime, endTime, thursdayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, thursdayXCord);
 		}
 		if (days.contains("F")) {
-			buildRectangle(root, startTime, endTime, fridayXCord);
+			buildRectangle(root, startTime, endTime, fridayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, fridayXCord);
 		}
 
