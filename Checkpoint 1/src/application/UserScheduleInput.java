@@ -39,7 +39,7 @@ public class UserScheduleInput extends Application{
 			Button submit = new Button("Submit");
 			gridPaneMain.add(submit, 2, 2);
 			 
-			//Submit Button
+			//Submit Button 
 			submit.setOnAction(value -> {
 				
 				//Storing data from class schedule

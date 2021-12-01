@@ -57,6 +57,9 @@ public class CalenderGenerator {
 		primaryStage.setScene(scene);
 	}
 
+	/**
+	 * Shows the stage when this method is called
+	 */
 	public void showStage() {
 		primaryStage.show();
 	}
@@ -444,7 +447,7 @@ public class CalenderGenerator {
 		Line line15 = new Line();
 		line15.setStartX(0);
 		line15.setStartY(750);
-		line15.setEndX(1000);
+		line15.setEndX(1000); 
 		line15.setEndY(750);
 		root.getChildren().add(line15);
 
