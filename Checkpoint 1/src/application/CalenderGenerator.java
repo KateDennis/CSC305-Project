@@ -63,7 +63,7 @@ public class CalenderGenerator {
 
 	/**
 	 * Parses the input of the submittedCourseList and extracts the attributes of
-	 * each class in the list.
+	 * each class in the list. Also makes the rectangle of the class either blue, red, green, or purple
 	 */
 	public void courseListToRectangle(Group root) {
 		ArrayList<Course> courseList = new ArrayList<Course>();
@@ -76,7 +76,8 @@ public class CalenderGenerator {
 		colorList.add(Color.PURPLE);
 
 		
-
+		//For each course, the class attributes are printed onto the grid along with generating a random color
+		//of the rectangle of the course
 		for (Course course : courseList) {
 			String classCode = course.getClassCode();
 			String courseName = course.getName();
@@ -136,22 +137,31 @@ public class CalenderGenerator {
 	public void plotRectaglesForClasses(Group root, double startTime, double endTime, String days, String courseCode,
 			String courseName, String professor, String building, String room, Color rectangleColor) {
 
+		//If the class meets on Monday, the class rectangle and attributes are added to the grid
 		if (days.contains("M")) {
 			buildRectangle(root, startTime, endTime, mondayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, mondayXCord);
 		}
+		
+		//If the class meets on Tuesday, the class rectangle and attributes are added to the grid
 		if (days.contains("Tu")) {
 			buildRectangle(root, startTime, endTime, tuesdayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, tuesdayXCord);
 		}
+		
+		//If the class meets on Wednesday, the class rectangle and attributes are added to the grid
 		if (days.contains("W")) {
 			buildRectangle(root, startTime, endTime, wednesdayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, wednesdayXCord);
 		}
+		
+		//If the class meets on Thursday, the class rectangle and attributes are added to the grid
 		if (days.contains("Th")) {
 			buildRectangle(root, startTime, endTime, thursdayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, thursdayXCord);
 		}
+		
+		//If the class meets on Friday, the class rectangle and attributes are added to the grid
 		if (days.contains("F")) {
 			buildRectangle(root, startTime, endTime, fridayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, fridayXCord);

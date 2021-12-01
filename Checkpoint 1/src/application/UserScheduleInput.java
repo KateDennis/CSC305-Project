@@ -47,6 +47,7 @@ public class UserScheduleInput extends Application{
 				String[] classSchedule = scheduleText.split("\n");
 				SubmitHandler submittedCourseList = new SubmitHandler(classSchedule);
 				
+				//If there is a conflict in the schedule, then the user is notified with the number of conflicts.
 				ConflictChecker checkingConflicts = new ConflictChecker(submittedCourseList.getCourseList());
 				if (checkingConflicts.getHasConflicts()) {
 					Stage conflictStage = new Stage();
@@ -58,6 +59,7 @@ public class UserScheduleInput extends Application{
 					gridPaneConflicts.setHgap(15);
 					gridPaneConflicts.setVgap(15);
 					
+					//Adds to the gridPane the conflicts occured and in which courses
 					int count = 0;
 					for (String conflict : checkingConflicts.getConflictList()) {
 						gridPaneConflicts.add(new Label(conflict), 0, count);
