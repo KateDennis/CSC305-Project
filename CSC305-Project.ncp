@@ -5,9 +5,9 @@
     <Language>CSharp</Language>
     <Entities>
       <Entity type="Class">
-        <Name>ScheduleGenerator</Name>
+        <Name>UserScheduleInput</Name>
         <Access>Public</Access>
-        <Location left="752" top="570" />
+        <Location left="492" top="327" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public static void Main()</Member>
@@ -17,10 +17,10 @@
       <Entity type="Class">
         <Name>Course</Name>
         <Access>Public</Access>
-        <Location left="436" top="27" />
-        <Size width="162" height="417" />
+        <Location left="643" top="595" />
+        <Size width="192" height="604" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">String newField</Member>
+        <Member type="Field">String classCode</Member>
         <Member type="Field">String className</Member>
         <Member type="Field">String startTime</Member>
         <Member type="Field">String endTime</Member>
@@ -30,6 +30,9 @@
         <Member type="Field">String room</Member>
         <Member type="Field">Double startCode</Member>
         <Member type="Field">Double endCode</Member>
+        <Member type="Field">Double hourStartCode</Member>
+        <Member type="Field">Double minuteStartCode</Member>
+        <Member type="Field">Double minuteEndCode</Member>
         <Member type="Constructor">public Course()</Member>
         <Member type="Method">private Double createsSmartCode()</Member>
         <Member type="Method">private Double createsEndCode()</Member>
@@ -40,12 +43,20 @@
         <Member type="Method">public boolean equals()</Member>
         <Member type="Method">public int compareTo()</Member>
         <Member type="Method">public String toString()</Member>
+        <Member type="Method">public String getClassCode()</Member>
+        <Member type="Method">public String getProfessor()</Member>
+        <Member type="Method">public String getBuilding()</Member>
+        <Member type="Method">public String getRoomNumber()</Member>
+        <Member type="Method">public Double getHourStartCode()</Member>
+        <Member type="Method">public Double getMinuteStartCode()</Member>
+        <Member type="Method">public Double getHourEndCode()</Member>
+        <Member type="Method">public Double getMinuteEndCode()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>SubmitHandler</Name>
         <Access>Public</Access>
-        <Location left="752" top="205" />
+        <Location left="942" top="379" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">ArrayList&lt;Course&gt; courseList</Member>
@@ -53,38 +64,77 @@
         <Member type="Method">public String toString()</Member>
         <Member type="Method">public ArrayList&lt;String&gt; createCourseCodeList()</Member>
         <Member type="Method">public ArrayList&lt;String&gt; createBuildingList()</Member>
+        <Member type="Method">public ArrayList&lt;Course&gt; getCourseList()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>View</Name>
+        <Name>CalenderGenerator</Name>
         <Access>Public</Access>
-        <Location left="1097" top="250" />
+        <Location left="1435" top="199" />
+        <Size width="237" height="485" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Stage primaryStage</Member>
+        <Member type="Field">SubmitHandler sumbittedCourseList</Member>
+        <Member type="Field">int timeDifferenceInitializer</Member>
+        <Member type="Field">int yDistanceBetweenHours</Member>
+        <Member type="Field">int mondayXCord</Member>
+        <Member type="Field">int tuesdayXCord</Member>
+        <Member type="Field">int wednesdayXCord</Member>
+        <Member type="Field">int thursdayXCord</Member>
+        <Member type="Field">int fridayXCord</Member>
+        <Member type="Field">int distBtwnDays</Member>
+        <Member type="Field">int distBtwnCourseAttributes</Member>
+        <Member type="Field">int courseAttributesYInitializer</Member>
+        <Member type="Field">int courseAttributesXInitializer</Member>
+        <Member type="Constructor">public CalenderGenerator()</Member>
+        <Member type="Method">public void makeGrid()</Member>
+        <Member type="Method">public void courseAttributesXInitializer()</Member>
+        <Member type="Method">public void showStage()</Member>
+        <Member type="Method">public void buildRectangle()</Member>
+        <Member type="Method">public void plotRectanglesForClasses()</Member>
+        <Member type="Method">public void plotClassAttributes()</Member>
+        <Member type="Method">public Group addDaysToGroup()</Member>
+        <Member type="Method">public Group addTimesToGroup()</Member>
+        <Member type="Method">public Group addLinesToGroup()</Member>
+        <Member type="Method">public Group addAugieImageToGroup()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConflictChecker</Name>
+        <Access>Public</Access>
+        <Location left="1200" top="314" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
-        <Member type="Constructor">public View()</Member>
-        <Member type="Method">public static void main()</Member>
-        <Member type="Method">public void start()</Member>
+        <Member type="Field">boolean hasConflicts</Member>
+        <Member type="Field">ArrayList&lt;String&gt; conflictList</Member>
+        <Member type="Constructor">public ConflictChecker()</Member>
+        <Member type="Method">public boolean getHasConflicts()</Member>
+        <Member type="Method">public ArrayList&lt;String&gt; getConflictList()</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="0" second="1">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>509</X>
-          <Y>491</Y>
+          <X>579</X>
+          <Y>656</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="2">
-        <Label>
-        </Label>
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>688</X>
+          <Y>437</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>908</X>
+          <Y>437</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
@@ -92,7 +142,43 @@
         <Label>
         </Label>
         <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1341</X>
+          <Y>272</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>720</X>
+          <Y>343</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1171</X>
+          <Y>343</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>874</X>
+          <Y>656</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1025</X>
+          <Y>626</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
