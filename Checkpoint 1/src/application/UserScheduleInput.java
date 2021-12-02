@@ -5,15 +5,15 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.*; 
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Font; 
+import javafx.scene.text.Font;
 
-public class UserScheduleInput extends Application{
+public class UserScheduleInput extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			//make gridPaneMain
+			// make gridPaneMain
 			GridPane gridPaneMain = new GridPane();
 			gridPaneMain.setAlignment(Pos.CENTER);
 			Scene scene = new Scene(gridPaneMain, 900, 300);
@@ -21,33 +21,34 @@ public class UserScheduleInput extends Application{
 			gridPaneMain.setPadding(new Insets(10));
 			gridPaneMain.setHgap(15);
 			gridPaneMain.setVgap(15);
-			
-			//title for window
+
+			// title for window
 			Label wordLabel = new Label("Arches Semester Data to Calender");
 			wordLabel.setFont(new Font("Arial", 20));
-			gridPaneMain.add(wordLabel, 0, 0); 
-			
-			//name of text box 
+			gridPaneMain.add(wordLabel, 0, 0);
+
+			// name of text box
 			Label schedule = new Label("Insert Class Schedule:");
 			gridPaneMain.add(schedule, 0, 2);
- 
-			//Creates text box
+
+			// Creates text box
 			TextArea userTextField = new TextArea();
 			gridPaneMain.add(userTextField, 1, 2);
-			
-			//Creates submit button 
+
+			// Creates submit button
 			Button submit = new Button("Submit");
 			gridPaneMain.add(submit, 2, 2);
-			 
-			//Submit Button 
+
+			// Submit Button
 			submit.setOnAction(value -> {
-				
-				//Storing data from class schedule
+
+				// Storing data from class schedule
 				String scheduleText = userTextField.getText();
 				String[] classSchedule = scheduleText.split("\n");
 				SubmitHandler submittedCourseList = new SubmitHandler(classSchedule);
-				
-				//If there is a conflict in the schedule, then the user is notified with the number of conflicts.
+
+				// If there is a conflict in the schedule, then the user is notified with the
+				// number of conflicts.
 				ConflictChecker checkingConflicts = new ConflictChecker(submittedCourseList.getCourseList());
 				if (checkingConflicts.getHasConflicts()) {
 					Stage conflictStage = new Stage();
@@ -58,41 +59,39 @@ public class UserScheduleInput extends Application{
 					gridPaneConflicts.setPadding(new Insets(10));
 					gridPaneConflicts.setHgap(15);
 					gridPaneConflicts.setVgap(15);
-					
-					//Adds to the gridPane the conflicts occured and in which courses
+
+					// Adds to the gridPane the conflicts occurred and in which courses
 					int count = 0;
 					for (String conflict : checkingConflicts.getConflictList()) {
 						gridPaneConflicts.add(new Label(conflict), 0, count);
 						count++;
-						
-					sceneConflicts.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-					conflictStage.setScene(sceneConflicts);
-					conflictStage.show();
+
+						sceneConflicts.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+						conflictStage.setScene(sceneConflicts);
+						conflictStage.show();
 					}
 				} else {
-				
+
 					CalenderGenerator generatedCalender = new CalenderGenerator(primaryStage, submittedCourseList);
 					generatedCalender.makeGrid();
 					generatedCalender.showStage();
 				}
-				
-				
-				//FOR TESTING PURPOSES ONLY
-				System.out.println(submittedCourseList.toString());
-				
+
+				// FOR TESTING PURPOSES ONLY
+				// System.out.println(submittedCourseList.toString());
+
 			});
-			
+
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-
 
 }

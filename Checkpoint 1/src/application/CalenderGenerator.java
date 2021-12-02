@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 
 public class CalenderGenerator {
 
-	
 	private Stage primaryStage;
 	private SubmitHandler submittedCourseList;
 	private int timeDifferenceInitializer = 7;
@@ -66,11 +65,14 @@ public class CalenderGenerator {
 
 	/**
 	 * Parses the input of the submittedCourseList and extracts the attributes of
-	 * each class in the list. Also makes the rectangle of the class either blue, red, green, or purple
+	 * each class in the list. Also makes the rectangle of the class either blue,
+	 * red, green, or purple
+	 * 
+	 * @param root - Group to which to add the rectangles to
 	 */
 	public void courseListToRectangle(Group root) {
 		ArrayList<Course> courseList = new ArrayList<Course>();
-		
+
 		ArrayList<Color> colorList = new ArrayList<Color>();
 		courseList = submittedCourseList.getCourseList();
 		colorList.add(Color.BLUE);
@@ -78,9 +80,9 @@ public class CalenderGenerator {
 		colorList.add(Color.GREEN);
 		colorList.add(Color.PURPLE);
 
-		
-		//For each course, the class attributes are printed onto the grid along with generating a random color
-		//of the rectangle of the course
+		// For each course, the class attributes are printed onto the grid along with
+		// generating a random color
+		// of the rectangle of the course
 		for (Course course : courseList) {
 			String classCode = course.getClassCode();
 			String courseName = course.getName();
@@ -94,12 +96,13 @@ public class CalenderGenerator {
 
 			startTime = (startTime - timeDifferenceInitializer) * yDistanceBetweenHours;
 			endTime = (endTime - timeDifferenceInitializer) * yDistanceBetweenHours;
-			
+
 			Random randInt = new Random();
 			int randomColorIndex = randInt.nextInt(4);
 			Color rectangleColor = colorList.get(randomColorIndex);
-			
-			plotRectaglesForClasses(root, startTime, endTime, days, classCode, courseName, professor, building, room, rectangleColor);
+
+			plotRectaglesForClasses(root, startTime, endTime, days, classCode, courseName, professor, building, room,
+					rectangleColor);
 
 		}
 
@@ -116,16 +119,14 @@ public class CalenderGenerator {
 	public void buildRectangle(Group root, double startTime, double endTime, double xCordOfDay, Color color) {
 		Rectangle rectangle = new Rectangle();
 		rectangle.setX(xCordOfDay);
-		
 
 		rectangle.setY(startTime);
 		rectangle.setWidth(distBtwnDays);
 		rectangle.setHeight(endTime - startTime);
 		root.getChildren().add(rectangle);
-		
+
 		rectangle.setFill(color);
-		
-		
+
 	}
 
 	/**
@@ -140,31 +141,36 @@ public class CalenderGenerator {
 	public void plotRectaglesForClasses(Group root, double startTime, double endTime, String days, String courseCode,
 			String courseName, String professor, String building, String room, Color rectangleColor) {
 
-		//If the class meets on Monday, the class rectangle and attributes are added to the grid
+		// If the class meets on Monday, the class rectangle and attributes are added to
+		// the grid
 		if (days.contains("M")) {
 			buildRectangle(root, startTime, endTime, mondayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, mondayXCord);
 		}
-		
-		//If the class meets on Tuesday, the class rectangle and attributes are added to the grid
+
+		// If the class meets on Tuesday, the class rectangle and attributes are added
+		// to the grid
 		if (days.contains("Tu")) {
 			buildRectangle(root, startTime, endTime, tuesdayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, tuesdayXCord);
 		}
-		
-		//If the class meets on Wednesday, the class rectangle and attributes are added to the grid
+
+		// If the class meets on Wednesday, the class rectangle and attributes are added
+		// to the grid
 		if (days.contains("W")) {
 			buildRectangle(root, startTime, endTime, wednesdayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, wednesdayXCord);
 		}
-		
-		//If the class meets on Thursday, the class rectangle and attributes are added to the grid
+
+		// If the class meets on Thursday, the class rectangle and attributes are added
+		// to the grid
 		if (days.contains("Th")) {
 			buildRectangle(root, startTime, endTime, thursdayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, thursdayXCord);
 		}
-		
-		//If the class meets on Friday, the class rectangle and attributes are added to the grid
+
+		// If the class meets on Friday, the class rectangle and attributes are added to
+		// the grid
 		if (days.contains("F")) {
 			buildRectangle(root, startTime, endTime, fridayXCord, rectangleColor);
 			plotClassAttributes(root, courseCode, courseName, professor, building, room, startTime, fridayXCord);
@@ -447,7 +453,7 @@ public class CalenderGenerator {
 		Line line15 = new Line();
 		line15.setStartX(0);
 		line15.setStartY(750);
-		line15.setEndX(1000); 
+		line15.setEndX(1000);
 		line15.setEndY(750);
 		root.getChildren().add(line15);
 

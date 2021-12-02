@@ -78,6 +78,7 @@ public class SubmitHandler {
 
 	/**
 	 * Returns the list of courses entered by the user
+	 * 
 	 * @return courseList entered by user
 	 */
 	public ArrayList<Course> getCourseList() {

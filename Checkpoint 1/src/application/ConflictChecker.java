@@ -8,25 +8,27 @@ public class ConflictChecker {
 	private ArrayList<String> conflictList = new ArrayList<String>();
 
 	/**
-	 * Creates a Conflict Checker which will check the course list for any conflicting times
+	 * Creates a Conflict Checker which will check the course list for any
+	 * conflicting times
 	 * 
 	 * @param courseList - the array of courses a student is taking
 	 */
 	public ConflictChecker(ArrayList<Course> courseList) {
-		
-		//Getting the intial course to check the remaining courses against
+
+		// Getting the initial course to check the remaining courses against
 		for (int courseIndex = 0; courseIndex < courseList.size(); courseIndex++) {
 			Course course = courseList.get(courseIndex);
-			
-			//Going through each course to check against the intial course for any conflicts
+
+			// Going through each course to check against the intial course for any
+			// conflicts
 			for (int i = courseIndex + 1; i < courseList.size(); i++) {
-				
-				//Removing the checked course if identical to original course
+
+				// Removing the checked course if identical to original course
 				if (course.equals(courseList.get(i))) {
 					courseList.remove(i);
-					
-				//Adding any conflicting courses to a conflict list
-				//Setting hasConflicts to true to mark that the list has conflicts
+
+					// Adding any conflicting courses to a conflict list
+					// Setting hasConflicts to true to mark that the list has conflicts
 				} else if (course.compareTo(courseList.get(i)) > 0) {
 					conflictList.add("Course " + course.getName() + " and Course " + courseList.get(i).getName()
 							+ " have conflicting times");

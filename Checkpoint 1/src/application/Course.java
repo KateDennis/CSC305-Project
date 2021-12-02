@@ -60,7 +60,7 @@ public class Course {
 			startDouble = Double.parseDouble(startTime.substring(2, 4));
 		}
 		startDouble = startDouble / 60;
-		//startDouble = startDouble / 100;
+		// startDouble = startDouble / 100;
 
 		startCode = startInt + startDouble;
 		if (startTime.contains("PM") && startInt != 12) {
@@ -79,27 +79,27 @@ public class Course {
 	 * @param endTime - the time the class ends
 	 * @return the time the class ends in the form of a double
 	 */
-	private double createEndCode(String endTime) { 
+	private double createEndCode(String endTime) {
 		int endInt = 0;
 		double endDouble = 0;
 		if (endTime.substring(0, 2).contains("10") || endTime.substring(0, 2).contains("11")
 				|| endTime.substring(0, 2).contains("12")) {
 			endInt = Integer.parseInt(endTime.substring(0, 2));
 			endDouble = Double.parseDouble(endTime.substring(3, 5));
-		} else {  
+		} else {
 			endInt = Integer.parseInt(endTime.substring(0, 1));
 			endDouble = Double.parseDouble(endTime.substring(2, 4));
 		}
 		endDouble = endDouble / 60;
-		//endDouble = endDouble / 100;
-		
+		// endDouble = endDouble / 100;
+
 		;
 		endCode = endInt + endDouble;
-		if (endTime.contains("PM") && endInt != 12) { 
+		if (endTime.contains("PM") && endInt != 12) {
 			endCode = endCode + 12;
 			endInt = endInt + 12;
 		}
-		
+
 		hourEndCode = endInt;
 		minuteEndCode = endDouble;
 		return endCode;
@@ -113,8 +113,10 @@ public class Course {
 	public String getName() {
 		return className;
 	}
+
 	/**
 	 * Gives the class code
+	 * 
 	 * @return the class code
 	 */
 	public String getClassCode() {
@@ -123,28 +125,31 @@ public class Course {
 
 	/**
 	 * Gives the name of the professor teaching the class
+	 * 
 	 * @return the professor's name
 	 */
 	public String getProfessor() {
 		return professor;
 	}
-	
+
 	/**
 	 * Gives the building where the class is held
+	 * 
 	 * @return the building name
 	 */
 	public String getBuilding() {
 		return building;
 	}
-	
+
 	/**
 	 * Gives the room number where the course is taught
+	 * 
 	 * @return the room number
 	 */
 	public String getRoomNumber() {
 		return room;
 	}
-	
+
 	/**
 	 * Gives the course days
 	 * 
@@ -160,7 +165,7 @@ public class Course {
 	 * @return the course start code
 	 */
 	public double getStartCode() {
-	
+
 		return startCode;
 	}
 
@@ -172,40 +177,43 @@ public class Course {
 	public double getEndCode() {
 		return endCode;
 	}
-	
+
 	/**
-	 * Gives the hour of the start of class 
+	 * Gives the hour of the start of class
+	 * 
 	 * @return hour of the start of class
 	 */
 	public double getHourStartCode() {
 		return hourStartCode;
 	}
-	
+
 	/**
 	 * Gives the minutes of the start of class in base 100
+	 * 
 	 * @return minutes of the start of class
 	 */
 	public double getMinuteStartCode() {
 		return minuteStartCode;
 	}
-	
+
 	/**
 	 * Gives the hour of the end of class
+	 * 
 	 * @return hour of end of class
 	 */
 	public double getHourEndCode() {
 		return hourEndCode;
 	}
-	
+
 	/**
 	 * Gives the minutes of the end of class in base 100
+	 * 
 	 * @return minutes of the end of class
 	 */
 	public double getMinuteEndCode() {
 		return minuteEndCode;
 	}
-	
-	
+
 	@Override
 	public boolean equals(Object object) {
 		if (object == this) {
@@ -348,6 +356,6 @@ public class Course {
 	public String toString() {
 		return classCode + ", " + className + ", " + building + ", " + room + ", " + professor + ", " + startTime + ", "
 				+ endTime + ", " + days;
-		
+
 	}
 }
