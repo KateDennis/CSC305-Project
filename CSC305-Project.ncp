@@ -17,7 +17,7 @@
       <Entity type="Class">
         <Name>Course</Name>
         <Access>Public</Access>
-        <Location left="643" top="595" />
+        <Location left="1356" top="193" />
         <Size width="192" height="604" />
         <Collapsed>False</Collapsed>
         <Member type="Field">String classCode</Member>
@@ -56,7 +56,7 @@
       <Entity type="Class">
         <Name>SubmitHandler</Name>
         <Access>Public</Access>
-        <Location left="942" top="379" />
+        <Location left="803" top="160" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">ArrayList&lt;Course&gt; courseList</Member>
@@ -70,7 +70,7 @@
       <Entity type="Class">
         <Name>CalenderGenerator</Name>
         <Access>Public</Access>
-        <Location left="1435" top="199" />
+        <Location left="791" top="665" />
         <Size width="237" height="485" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Stage primaryStage</Member>
@@ -102,7 +102,7 @@
       <Entity type="Class">
         <Name>ConflictChecker</Name>
         <Access>Public</Access>
-        <Location left="1200" top="314" />
+        <Location left="803" top="418" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">boolean hasConflicts</Member>
@@ -114,73 +114,73 @@
       </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Association" first="0" second="1">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="False">
-          <X>579</X>
-          <Y>656</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-      </Relationship>
-      <Relationship type="Association" first="0" second="2">
+      <Relationship type="Dependency" first="0" second="4">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="0" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>688</X>
-          <Y>437</Y>
+          <X>589</X>
+          <Y>300</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>908</X>
-          <Y>437</Y>
+          <X>750</X>
+          <Y>250</Y>
         </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="0" second="3">
+      <Relationship type="Dependency" first="0" second="3">
         <Label>
         </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>1341</X>
-          <Y>272</Y>
+          <X>731</X>
+          <Y>744</Y>
         </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="0" second="4">
+      <Relationship type="Dependency" first="2" second="1">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>720</X>
-          <Y>343</Y>
+          <X>1158</X>
+          <Y>467</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1171</X>
-          <Y>343</Y>
+          <X>1328</X>
+          <Y>495</Y>
         </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="1" second="2">
+      <Relationship type="Dependency" first="3" second="1">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>874</X>
-          <Y>656</Y>
+          <X>1062</X>
+          <Y>1058</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1025</X>
-          <Y>626</Y>
+          <X>1157</X>
+          <Y>1058</Y>
         </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Dependency" first="4" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1328</X>
+          <Y>495</Y>
+        </BendPoint>
       </Relationship>
     </Relationships>
   </ProjectItem>
