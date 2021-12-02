@@ -1,13 +1,15 @@
 /* 
- * In this file, I am testing equals()
- * and compareTo() from our Course class,
- * which in my opinion is important because
- * equals and compareto are infamous for
- * being complicated. Here, they are less
- * complicated, but I make do. In addition,
+ * In this file, we are testing equals()
+ * and compareTo() from our Course class.
+ * The equals and compareTo are infamous for
+ * being complicated. In addition,
  * when it comes to testing in this way,
  * it's important to be thorough.
  * 
+ * It's important to point out here that 
+ * our compareTo() method is more of a 
+ * isThereConflict() method in a sense, 
+ * as it determines whether or not you can have both courses.
  */
 
 package application;
@@ -18,8 +20,9 @@ class TestingCourse {
 	
 	@Test
 	void testRandomObjects() {
-		
-		Course any = new Course(
+		//Tests to make sure Course object is not recognized as
+		//just a String object
+		Course courseOne = new Course(
 				"CSC-201-02",
 				"Intro to Computer Science",
 				"OLIN",
@@ -30,20 +33,18 @@ class TestingCourse {
 				"M W F"
 				);
 		
-		String word = "Literally any other object.";
-		Boolean result = any.equals(word);
-		
-		// Even eclipse knows this test is dumb
-		// but testing can be useful, even if you
-		// might think otherwise at first.
-		
+		String string = "Literally any other object.";
+		Boolean result = courseOne.equals(string);		
 		assertEquals(false,result);
 	}
 	
 	@Test
 	void testACopy() {
+		// This is logically true, but it's important
+		// to know that this case works, when it isn't
+		// manually written in this way.
 		
-		Course any = new Course(
+		Course courseTwo = new Course(
 				"MUSC-211L-01",
 				"Muscianship III Lab",
 				"BERG",
@@ -54,19 +55,17 @@ class TestingCourse {
 				"Tu Th"
 				);
 		
-		Boolean result = any.equals(any);
-		
-		// This is logically true, but it's important
-		// to know that this case works, when it isn't
-		// manually written in this way.
-		
+		Boolean result = courseTwo.equals(courseTwo);
 		assertEquals(true,result);
 	}
 	
 	@Test
 	void testInputVariety() {
+		//Tests to make sure two Course objects are not the same. This is represented
+		//by the Arches data given. These courses must be in the same format
+		//as per given by Arches.
 		
-		Course any = new Course(
+		Course courseOne = new Course(
 				"MUSC-211L-01",
 				"Muscianship III Lab",
 				"BERG",
@@ -77,7 +76,7 @@ class TestingCourse {
 				"Tu Th"
 				);
 		
-		Course any2 = new Course(
+		Course courseTwo = new Course(
 				"  MUSC-211L-01",
 				"Muscianship  III Lab",
 				"BERG ",
@@ -88,21 +87,16 @@ class TestingCourse {
 				"Tu    Th "
 				);
 		
-		Boolean result = any.equals(any2);
-		
-		// I knew this would happen, but to be fair,
-		// this situation is extremely unlikely.
-		// The system interprets schedule information the
-		// same way each time around, and knows to handle
-		// extra spaces, whether there's one or multiple.
-		
-		assertEquals(true,result);
+		Boolean result = courseOne.equals(courseTwo);
+		assertEquals(false,result);
 	}
 	
 	@Test
 	void testTwoCourses() {
+		//Compares two course objects making sure that the attributes are not
+		//the same
 		
-		Course any = new Course(
+		Course courseOne = new Course(
 				"MUEN-209-NC",
 				"Symphonic Band",
 				"BERG",
@@ -113,7 +107,7 @@ class TestingCourse {
 				"Tu Th" 
 				);
 		
-		Course old = new Course(
+		Course courseTwo = new Course(
 				"CSC-201-02",
 				"Intro to Computer Science",
 				"OLIN",
@@ -124,34 +118,15 @@ class TestingCourse {
 				"M W F"
 				);
 		
-		Boolean result = any.equals(old);
-		
-		// Obviously, we don't want these two to be the same.
-		// It looks obvious, of course, but it's still important
-		// to test this because when it isn't hard coded,
-		// this testing will remove the uncertainty.
-		
+		Boolean result = courseOne.equals(courseTwo);
 		assertEquals(false,result);
 	}
 	
-	// Overall, there are some conclusions I reached
-	// through this testing. Personally, I'm not entirely
-	// sure how the system handles null for certain fields
-	// in the course object itself, but I trust my group
-	// members have that handled, and moreover, I don't
-	// believe Arches would give data like that.
-	
-	// The other important conclusion I reached is that
-	// JUnit testing needs to test methods, and personally,
-	// I find that we could have split our code into
-	// MORE methods, that way I could have tested other
-	// parts of code without having to test large pieces.
-	// But you live and learn.
-	
 	@Test
 	void testingBefore() {
+		//Compares the course attributes of each course
 		
-		Course any = new Course(
+		Course courseOne = new Course(
 				"MUSC-211L-01",
 				"Muscianship III Lab",
 				"BERG",
@@ -162,7 +137,7 @@ class TestingCourse {
 				"Tu Th"
 				);
 		
-		Course any2 = new Course(
+		Course courseTwo = new Course(
 				"MUEN-209-NC",
 				"Symphonic Band",
 				"BERG",
@@ -173,14 +148,15 @@ class TestingCourse {
 				"Tu Th" 
 				);
 		
-		int result = any.compareTo(any2);
+		int result = courseOne.compareTo(courseTwo);
 		assertEquals(-1,result);
 	}
 	
 	@Test
 	void testingSame() {
+		//Tests to make sure the course attributes are the same within itself
 		
-		Course any = new Course(
+		Course courseOne = new Course(
 				"MUSC-211L-01",
 				"Muscianship III Lab",
 				"BERG",
@@ -191,23 +167,15 @@ class TestingCourse {
 				"Tu Th"
 				);
 		
-		int result = any.compareTo(any);
-		assertEquals(-1,result);
-		
-		// Technically, if you somehow listed the same
-		// course twice, there wouldn't be an error,
-		// because yes it's at the same time, but it's
-		// the same class. This is kind of a fringe
-		// technicality but I think it shows where
-		// our code could adapt, if the use of
-		// our program changed.
+		int result = courseOne.compareTo(courseOne);
+		assertEquals(1,result);
 	}
 	
 	@Test
 	
 	void testingWithin() {
-		
-		Course any = new Course(
+		//Tests to make sure properly compare one course to another
+		Course courseOne = new Course(
 				"MUSC-211L-01",
 				"Muscianship III Lab",
 				"BERG",
@@ -218,7 +186,7 @@ class TestingCourse {
 				"M Tu W Th F"
 				);
 		
-		Course any2 = new Course(
+		Course courseTwo = new Course(
 				"MUEN-209-NC",
 				"Symphonic Band",
 				"BERG",
@@ -229,25 +197,8 @@ class TestingCourse {
 				"Tu W Th F" 
 				);
 		
-		int result = any.compareTo(any);
+		int result = courseOne.compareTo(courseTwo);
 		assertEquals(1,result);
-		
-		// Because this test failed, it means that
-		// our "compareto" method is working properly.
-		// For this situation, I combined my J Term
-		// class with my 100 level language class.
-		// It's not a likely scenario at all, but it's
-		// evidence our if then statements work.
 	}
 	
-	// It's important to point out here that
-	// our compareTo() method is more of a
-	// isThereConflict() method in a sense,
-	// as it determines whether or not you
-	// can have both courses.
-	
-	// Another conclusion here is that there might
-	// be a way to simplify the logic or reformat it,
-	// but at the end of the day, if the code works
-	// that's good too, generally.
 }
