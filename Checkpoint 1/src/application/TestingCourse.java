@@ -1,18 +1,23 @@
+/* 
+ * In this file, I am testing equals()
+ * and compareTo() from our Course class,
+ * which in my opinion is important because
+ * equals and compareto are infamous for
+ * being complicated. Here, they are less
+ * complicated, but I make do. In addition,
+ * when it comes to testing in this way,
+ * it's important to be thorough.
+ * 
+ */
+
 package application;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-// In this file, I am testing the equals
-// method of our Course object class.
-
-class TestingEquals {
-
+class TestingCourse {
+	
 	@Test
-	void goodTest() {
-		
-		// This course data is actually coming from
-		// schedule five in the example schedule
-		// info file.
+	void testRandomObjects() {
 		
 		Course any = new Course(
 				"CSC-201-02",
@@ -29,18 +34,14 @@ class TestingEquals {
 		Boolean result = any.equals(word);
 		
 		// Even eclipse knows this test is dumb
-		// but testing can be useful, even if
+		// but testing can be useful, even if you
 		// might think otherwise at first.
 		
 		assertEquals(false,result);
 	}
 	
 	@Test
-	void betterTest() {
-		
-		// This is another course from schedule five
-		// having been converted by our program into
-		// a course object already.
+	void testACopy() {
 		
 		Course any = new Course(
 				"MUSC-211L-01",
@@ -55,7 +56,7 @@ class TestingEquals {
 		
 		Boolean result = any.equals(any);
 		
-		// This is logically true, but more it's important
+		// This is logically true, but it's important
 		// to know that this case works, when it isn't
 		// manually written in this way.
 		
@@ -63,7 +64,7 @@ class TestingEquals {
 	}
 	
 	@Test
-	void bestTest() {
+	void testInputVariety() {
 		
 		Course any = new Course(
 				"MUSC-211L-01",
@@ -99,10 +100,7 @@ class TestingEquals {
 	}
 	
 	@Test
-	void anotherGoodTest() {
-		
-		// Here is another course object generated
-		// using the info from schedule five.
+	void testTwoCourses() {
 		
 		Course any = new Course(
 				"MUEN-209-NC",
@@ -150,8 +148,106 @@ class TestingEquals {
 	// parts of code without having to test large pieces.
 	// But you live and learn.
 	
-	// And truly, I could have made more specific cases,
-	// but since the fields are ALL strings, this is relatively
-	// uncomplicated, and again, certain test cases are more
-	// like to really occur than others.
+	@Test
+	void testingBefore() {
+		
+		Course any = new Course(
+				"MUSC-211L-01",
+				"Muscianship III Lab",
+				"BERG",
+				"POTTERH",
+				"Margaret J Ellis",
+				"8:20AM",
+				"9:10AM",
+				"Tu Th"
+				);
+		
+		Course any2 = new Course(
+				"MUEN-209-NC",
+				"Symphonic Band",
+				"BERG",
+				"ER",
+				"James M Lambrecht",
+				"4:15PM",
+				"5:30PM",
+				"Tu Th" 
+				);
+		
+		int result = any.compareTo(any2);
+		assertEquals(-1,result);
+	}
+	
+	@Test
+	void testingSame() {
+		
+		Course any = new Course(
+				"MUSC-211L-01",
+				"Muscianship III Lab",
+				"BERG",
+				"POTTERH",
+				"Margaret J Ellis",
+				"8:20AM",
+				"9:10AM",
+				"Tu Th"
+				);
+		
+		int result = any.compareTo(any);
+		assertEquals(-1,result);
+		
+		// Technically, if you somehow listed the same
+		// course twice, there wouldn't be an error,
+		// because yes it's at the same time, but it's
+		// the same class. This is kind of a fringe
+		// technicality but I think it shows where
+		// our code could adapt, if the use of
+		// our program changed.
+	}
+	
+	@Test
+	
+	void testingWithin() {
+		
+		Course any = new Course(
+				"MUSC-211L-01",
+				"Muscianship III Lab",
+				"BERG",
+				"POTTERH",
+				"Margaret J Ellis",
+				"8:30AM",
+				"11:30AM",
+				"M Tu W Th F"
+				);
+		
+		Course any2 = new Course(
+				"MUEN-209-NC",
+				"Symphonic Band",
+				"BERG",
+				"ER",
+				"James M Lambrecht",
+				"10:30AM",
+				"11:25",
+				"Tu W Th F" 
+				);
+		
+		int result = any.compareTo(any);
+		assertEquals(1,result);
+		
+		// Because this test failed, it means that
+		// our "compareto" method is working properly.
+		// For this situation, I combined my J Term
+		// class with my 100 level language class.
+		// It's not a likely scenario at all, but it's
+		// evidence our if then statements work.
+	}
+	
+	// It's important to point out here that
+	// our compareTo() method is more of a
+	// isThereConflict() method in a sense,
+	// as it determines whether or not you
+	// can have both courses.
+	
+	// Another conclusion here is that there might
+	// be a way to simplify the logic or reformat it,
+	// but at the end of the day, if the code works
+	// that's good too, generally.
 }
