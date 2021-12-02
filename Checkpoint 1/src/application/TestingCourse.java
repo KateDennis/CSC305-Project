@@ -1,7 +1,7 @@
 /* 
  * In this file, we are testing equals()
  * and compareTo() from our Course class.
- * The equals and compareTo are infamous for
+ * The equals() and compareTo() are infamous for
  * being complicated. In addition,
  * when it comes to testing in this way,
  * it's important to be thorough.
